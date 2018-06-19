@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  MIDI Test.cpp
+  console_io_handler.cpp
+  files.cpp
+  messageSend.cpp
+  midi.cpp
+  Generating Code...
+  MIDI Test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\MIDI Test\Debug\MIDI Test.exe
