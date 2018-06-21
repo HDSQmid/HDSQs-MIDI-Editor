@@ -30,6 +30,14 @@ public:
 
 };
 
+class ConsoleFileNew : public consoleInputHandler {
+public:
+	ConsoleFileNew();
+
+	void call(std::string args);
+
+};
+
 class ConsoleFileClose : public consoleInputHandler {
 public:
 	ConsoleFileClose();
@@ -54,6 +62,14 @@ public:
 
 };
 
+class ConsoleFileMakeEdit : public consoleInputHandler { // for debug purposes
+public:
+	ConsoleFileMakeEdit();
+
+	void call(std::string args);
+
+};
+
 class ConsoleQuit : public consoleInputHandler {
 public:
 	ConsoleQuit();
@@ -73,6 +89,14 @@ public:
 class ConsoleCrash : public consoleInputHandler {
 public:
 	ConsoleCrash();
+
+	void call(std::string args);
+
+};
+
+class ConsoleInfo : public consoleInputHandler {
+public:
+	ConsoleInfo();
 
 	void call(std::string args);
 

@@ -1,0 +1,10 @@
+﻿  stdafx.cpp
+  console_io_handler.cpp
+  files.cpp
+  messageSend.cpp
+  MIDI Test.cpp
+  midi.cpp
+  Generating code
+  All 260 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  MIDI Test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\HDSQs-MIDI-Editor\x64\Release\MIDI Test.exe

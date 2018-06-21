@@ -1,10 +1,33 @@
 #include "stdafx.h"
 #include "messageSend.h"
 
+std::string chooseYN() {
 
-void sendMessage(std::string message, int title)
+	std::cout << "type (y)es or (n)o" << std::endl;
+	while (true) {
+
+		char ch = getchar();
+
+		
+
+		if (ch == 'y' || ch == 'Y') return "y";		
+
+		if (ch == 'n' || ch == 'N') return "n";
+
+		//continue until good input given
+
+		std::cout << "bad input" << std::endl;
+
+	}
+
+}
+
+std::string sendMessage(std::string message, int title, int response)
 {
 #ifdef CONSOLE
+
+	// print message
+
 	HANDLE hConsole;
 	int colour;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -27,19 +50,47 @@ void sendMessage(std::string message, int title)
 			colour = 2; // green
 			titleS = "Tip";
 			break; 
+	case MESSAGE_QUESTION:
+			colour = 5; // purple
+			titleS = "Question";
+			break;
 	default: 
 			colour = 4; // red
 			SetConsoleTextAttribute(hConsole, colour);
 			std::cout << "System Error: Unknown message title" << std::endl;
 			SetConsoleTextAttribute(hConsole, 15); // return text colour to normal before returning
-			return;
+			return  "Error";
 
 	} 
 
 	SetConsoleTextAttribute(hConsole, colour);
 	std::cout << titleS << ": \t\t" << message << std::endl;
 	SetConsoleTextAttribute(hConsole, 15); // return text colour to normal before returning
-#endif // 
+
+	std::string ret = "";
+
+	// get response
+	switch (response) {
+
+	case RESPONSE_OK:
+		return "Ok";
+
+	case RESPONSE_YN:
+		return chooseYN();
+
+	case RESPONSE_STRING:
+		std::getline(std::cin, ret);
+		return ret;
+		
+	default:
+		colour = 4; // red
+		SetConsoleTextAttribute(hConsole, colour);
+		std::cout << "System Error: Unknown response type" << std::endl;
+		SetConsoleTextAttribute(hConsole, 15); // return text colour to normal before returning
+		return "Error";
+	}
+
+#endif //  CONSOLE
 
 
 }

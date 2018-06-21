@@ -2,16 +2,19 @@
 #include "console_io_handler.h"
 #include "messageSend.h"
 
-#define NUM_HANDLERS 7
+#define NUM_HANDLERS 10
 ConsoleQuit quit;
 ConsoleHelp help;
+ConsoleFileNew newFile;
 ConsoleFileOpen openFile;
 ConsoleFileClose closeFile;
 ConsoleFileSave saveFile;
 ConsoleFileSaveAs saveFileAs;
+ConsoleFileMakeEdit makeEdit;
 ConsoleCrash crash;
+ConsoleInfo info;
 
-consoleInputHandler* input_handlers[NUM_HANDLERS] = { &help, &quit, &openFile, &closeFile, &saveFile, &saveFileAs, &crash };
+consoleInputHandler* input_handlers[NUM_HANDLERS] = { &help, &quit, &openFile, &newFile, &closeFile, &saveFile, &saveFileAs, &crash, &info, &makeEdit };
 
 void handleConsoleInput(std::string input)
 {
@@ -171,6 +174,7 @@ ConsoleQuit::ConsoleQuit()
 
 void ConsoleQuit::call(std::string args)
 {
+	if( fileIsOpen()) fileClose();
 	exit(0);
 }
 
@@ -229,4 +233,41 @@ ConsoleCrash::ConsoleCrash()
 void ConsoleCrash::call(std::string args)
 {
 	throw new std::exception("ForceQuit");
+}
+
+ConsoleInfo::ConsoleInfo()
+{
+	identifier = "info";
+	description = "gives info about program";
+	help = "arguments: (none) \nexample usage: info";
+}
+
+
+void ConsoleInfo::call(std::string args)
+{
+	sendGreeting();
+}
+
+ConsoleFileNew::ConsoleFileNew()
+{
+	identifier = "new";
+	description = "creates a new file";
+	help = "arguments: (none) \nexample usage: new";
+}
+
+void ConsoleFileNew::call(std::string args)
+{
+	fileNew();
+}
+
+ConsoleFileMakeEdit::ConsoleFileMakeEdit()
+{
+	identifier = "makeEdit";
+	description = "makes a mock edit on the open file";
+	help = "arguments: (none) \nexample usage: makeEdit";
+}
+
+void ConsoleFileMakeEdit::call(std::string args)
+{
+	currentFile->makeEdit();
 }
