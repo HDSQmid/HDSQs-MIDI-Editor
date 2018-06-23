@@ -173,12 +173,39 @@ class Midi {
 
 		EventTrack channelEvents[16];
 
-		// vector of tracks
+		std::vector<MidiTrack> tracks;
 
+		
 		std::string name, copyright, description;
-		int PPQN;
+		int PPQN = 960;
+
+public:
+
+		Midi();
 
 
+		//functions for getting/setting midi details
+		void setName(std::string newName);	// set song name
+		std::string getName();				// get song name
+
+		void setCopyright(std::string str);				// set copyright info
+		std::string getCopyright();
+
+		void setDescription(std::string str);				// set song description
+		std::string getDescription();
+
+		std::string getInfo(std::string style = "standard");				// gets info about song
+
+		unsigned long int getNoteCount();
+
+		//functions for tracks
+		void addTrack(std::string name = "");
+
+		void removeTrack(int trackNum);
+
+		void renameTrack(std::string newName);
+
+		void changeTrackChannel(int newChannel);
 
 	};
 

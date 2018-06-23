@@ -123,3 +123,66 @@ void MidiTempo::setValue(int val)
 		value = val; // no upper limit
 	}
 }
+
+Midi::Midi()
+{
+	name = "";
+	copyright = "";
+	description = "MIDI made in " APP_NAME;
+}
+
+void Midi::setName(std::string newName)
+{
+	name = newName;
+}
+
+std::string Midi::getName()
+{
+	return name;
+}
+
+void Midi::setCopyright(std::string str)
+{
+	copyright = str;
+}
+
+std::string Midi::getCopyright()
+{
+	return copyright;
+}
+
+void Midi::setDescription(std::string str)
+{
+	description = str;
+}
+
+std::string Midi::getDescription()
+{
+	return description;
+}
+
+std::string Midi::getInfo(std::string style)
+{
+	std::string ret;
+
+	if (style == "standard") {
+
+		ret = name + "\n\n" + description + "\n" + copyright;
+
+	}
+
+	if (style == "blackMidi") {
+
+		ret = name + " - " + std::to_string(getNoteCount()) + " Notes" + "\n\n" + description + "\n" + copyright;
+
+	}
+
+	return ret;
+}
+
+unsigned long int Midi::getNoteCount()
+{
+	// calculate number of notes in midi
+
+	return 0;
+}
