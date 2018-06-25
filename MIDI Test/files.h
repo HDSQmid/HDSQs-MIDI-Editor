@@ -2,13 +2,13 @@
 #include "midiLib.h"
 
 
-class file {
+class midiFile {
 public:
-	file(std::string fileAddress);
+	midiFile(std::string fileAddress);
 
-	file();
+	midiFile();
 
-	~file();
+	~midiFile();
 
 	void save();
 
@@ -20,13 +20,14 @@ public:
 
 protected:
 	std::string location = "";
+
 	bool hasChanged;
 
 	void saveFile();
 
 };
 
-extern file* currentFile;
+extern midiFile* currentFile;
 
 void fileOpen(std::string location);
 

@@ -1,0 +1,35 @@
+English
+
+
+1 Message
+2 Error
+3 Help
+4 Question
+
+101 Ok
+102 Yes/No
+103 Retry/Cancel
+104 Enter value
+
+
+1000 No commands matched your arguments.
+
+1100 Opened file.
+1101 Created new file.
+1102 Closed file.
+1103 There is no file open. Open a file and try again.
+1104 Not a valid file name
+1105 Would you like to save your changes?
+
+
+100011 NULL
+100012 Does nothing
+100013 N/A
+100014 N/A
+
+100021 open
+100022 Opens a file
+100023 fileName
+100024 open example.mid
+
+100025 

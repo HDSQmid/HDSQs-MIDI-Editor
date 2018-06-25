@@ -3,82 +3,79 @@
 #include "messageSend.h"
 #include "midiLib.h"
 
-file* currentFile = NULL; // eventually make vector of open files
+midiFile* currentFile = NULL; // eventually make vector of open files
 
 
-file::file(std::string fileAddress)
+midiFile::midiFile(std::string fileAddress)
 {
 	location = fileAddress;
 
 	//open file here
 
 	hasChanged = false;
-	std::string str = MESSAGE_OPEN_FILE + fileAddress;
-	sendMessage(str);
+	
+	sendMessage(MESSAGE_OPEN_FILE, fileAddress);
 
 }
 
-file::file()
+midiFile::midiFile()
 {
 	hasChanged = false;
-	std::string str = MESSAGE_NEW_FILE;
-	sendMessage(str);
+	sendMessage(MESSAGE_NEW_FILE);
 }
 
-file::~file()
+midiFile::~midiFile()
 {
 	if (hasChanged) {
 
 		if (
-			 sendMessage(MESSAGE_FILE_UNSAVED, MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_YN) == "y"
+			 sendMessage(MESSAGE_FILE_UNSAVED, location, MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_YN) == "y"
 			) save();
 
 	}
 	sendMessage(MESSAGE_CLOSE_FILE);
 }
 
-void file::save()
+void midiFile::save()
 {
 	if (hasChanged) {
 
 		if (location == "") {
-			location = sendMessage("Where would you like to save?", MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_STRING);
+			location = sendMessage(STRING_ENTER_SAVE_LOCATION,"" ,MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_STRING);
 			//check filename is valid
 		}
 
 		saveFile();
 
-		std::string str = "Saved " + location;
-		sendMessage(str);
+		sendMessage(MESSAGE_FILE_SAVED, location);
 	}
 	else {
 
-		sendMessage("Didn't save file. There were no changes");
+		sendMessage(STRING_NO_CHANGES_DIDNT_SAVE);
 
 	}
 
 }
 
-void file::saveAs(std::string newFileName)
+void midiFile::saveAs(std::string newFileName)
 {
 	location = newFileName;
 	saveFile();
-	std::string str = "Saved as " + location;
-	sendMessage(str);
+	sendMessage(MESSAGE_FILE_SAVED_AS, location);
 
 }
 
-void file::makeEdit()
+void midiFile::makeEdit()
 {
 	if (currentFile != NULL) { 
 		hasChanged = true;
-		sendMessage("Edit made");
+		sendMessage(MESSAGE_EDIT_MADE);
 	}
-	else sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR, MESSAGE_RESPONSE_OK);
+	else sendMessage(MESSAGE_NO_FILE_OPEN, "",MESSAGE_TYPE_ERROR, MESSAGE_RESPONSE_OK);
 }
 
 //the one that actually saves the file
-void file::saveFile()
+void midiFile::saveFile()
 {
 	
 
@@ -94,7 +91,7 @@ void fileOpen(std::string location)
 
 	}
 
-	currentFile = new file(location);
+	currentFile = new midiFile(location);
 
 }
 
@@ -114,7 +111,7 @@ void fileNew()
 
 	}
 
-	currentFile = new file();
+	currentFile = new midiFile();
 
 }
 

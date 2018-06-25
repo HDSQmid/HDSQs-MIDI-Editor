@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "console_io_handler.h"
 #include "messageSend.h"
+#include "multiLingual.h"
 
 #define NUM_HANDLERS 10
 ConsoleQuit quit;
@@ -29,6 +30,8 @@ void handleConsoleInput(std::string input)
 	std::string args = oss.str();
 	if(args != "") args = args.substr(1);
 
+	//reverse translate std::string test
+
 	//remove command from rest of arguments for easier processing
 
 	bool foundCall = false; // bool for whether a handler was found
@@ -49,9 +52,9 @@ void handleConsoleInput(std::string input)
 
 consoleInputHandler::consoleInputHandler()
 {
-	identifier = "NULL";
-	description = "Does nothing";
-	help = "You don't need it";
+	identifier = CONSOLE_INPUT_HANDLER_DEFAULT_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_DEFAULT_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_DEFAULT_ARGUMENTS;
 }
 
 void consoleInputHandler::call(std::string args)
@@ -63,26 +66,32 @@ void consoleInputHandler::call(std::string args)
 
 std::string consoleInputHandler::getIdentifier()
 {
-	return identifier;
+	return translate(identifier);
 }
 
 std::string consoleInputHandler::getDescription()
 {
-	return description;
+	return translate(description);
 }
 
-std::string consoleInputHandler::getHelp()
+std::string consoleInputHandler::getArguments()
 {
-	return help;
+	return translate(arguments);
+}
+
+std::string consoleInputHandler::getExampleUsage()
+{
+	return translate(exampleUsage);
 }
 
 /***************************************/
 
 ConsoleFileOpen::ConsoleFileOpen()
 {
-	identifier = "open";
-	description = "opens a file";
-	help = "arguments: fileName \nexample usage: open example.mid";
+	identifier = CONSOLE_INPUT_HANDLER_FILE_OPEN_IDENTIFIER; 
+	description = CONSOLE_INPUT_HANDLER_FILE_OPEN_DESCRIPTION; 
+	arguments = CONSOLE_INPUT_HANDLER_FILE_OPEN_ARGUMENTS; 
+	exampleUsage = CONSOLE_INPUT_HANDLER_DEFAULT_EXAMPLE_USAGE;
 }
 
 void ConsoleFileOpen::call(std::string args)
@@ -101,16 +110,17 @@ void ConsoleFileOpen::call(std::string args)
 
 ConsoleFileClose::ConsoleFileClose()
 {
-	identifier = "close";
-	description = "closes the open file";
-	help = "arguments: (none) \nexample usage: close";
+	identifier = CONSOLE_INPUT_HANDLER_FILE_CLOSE_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_FILE_CLOSE_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_FILE_CLOSE_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_CLOSE_EXAMPLE_USAGE;
 }
 
 void ConsoleFileClose::call(std::string args)
 {
 	if (currentFile == NULL) // if file is not open
 	{
-		sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR);
+		sendMessage(MESSAGE_NO_FILE_OPEN, "",MESSAGE_TYPE_ERROR);
 		return;
 
 	}
@@ -120,16 +130,17 @@ void ConsoleFileClose::call(std::string args)
 
 ConsoleFileSave::ConsoleFileSave()
 {
-	identifier = "save";
-	description = "saves the open file";
-	help = "arguments: (fileName - if saving as) \nexample usage: save \nexample usage: save example2.txt";
+	identifier = CONSOLE_INPUT_HANDLER_FILE_SAVE_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_FILE_SAVE_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_FILE_SAVE_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_SAVE_EXAMPLE_USAGE;
 }
 
 void ConsoleFileSave::call(std::string args)
 {
 	if (currentFile == NULL) // if file is not open
 	{
-		sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR);
+		sendMessage(MESSAGE_NO_FILE_OPEN, "", MESSAGE_TYPE_ERROR);
 		return;
 
 	}
@@ -141,23 +152,24 @@ void ConsoleFileSave::call(std::string args)
 
 ConsoleFileSaveAs::ConsoleFileSaveAs()
 {
-	identifier = "saveas";
-	description = "saves the open file under a new file name";
-	help = "arguments: fileName \nexample usage: save example2.txt";
+	identifier = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_EXAMPLE_USAGE;
 }
 
 void ConsoleFileSaveAs::call(std::string args)
 {
 	if (currentFile == NULL) // if file is not open
 	{
-		sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR);
+		sendMessage(MESSAGE_NO_FILE_OPEN, "",MESSAGE_TYPE_ERROR);
 		return;
 
 	}
 
 	if (args == "") { // if no file name provided
 
-		sendMessage(MESSAGE_NOT_VALID_FILENAME, MESSAGE_TYPE_ERROR);
+		sendMessage(MESSAGE_NOT_VALID_FILENAME, "", MESSAGE_TYPE_ERROR);
 		return;
 
 	}
@@ -167,9 +179,10 @@ void ConsoleFileSaveAs::call(std::string args)
 
 ConsoleQuit::ConsoleQuit()
 {
-	identifier = "quit";
-	description = "quits the program";
-	help = "arguments: (none) \nexample usage: quit";
+	identifier = CONSOLE_INPUT_HANDLER_QUIT_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_QUIT_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_QUIT_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_QUIT_EXAMPLE_USAGE;
 }
 
 void ConsoleQuit::call(std::string args)
@@ -180,9 +193,10 @@ void ConsoleQuit::call(std::string args)
 
 ConsoleHelp::ConsoleHelp()
 {
-	identifier = "help";
-	description = "provides help";
-	help = "arguments: (argument) \nexample usage: help \nexample usage: help open";
+	identifier = CONSOLE_INPUT_HANDLER_HELP_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_HELP_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_HELP_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_HELP_EXAMPLE_USAGE;
 }
 
 void ConsoleHelp::call(std::string args)
@@ -211,12 +225,12 @@ void ConsoleHelp::call(std::string args)
 			if (input_handlers[i]->getIdentifier() == args) {
 				std::cout << "help for " << input_handlers[i]->getIdentifier() << "\n" 
 					<< input_handlers[i]->getDescription() << "\n" 
-					<< input_handlers[i]->getHelp() << std::endl;
+					<< input_handlers[i]->getArguments() << std::endl;
 				foundCall = 1;
 				break;
 			}			
 		}
-		if (!foundCall) sendMessage(MESSAGE_NO_MATCHING_COMMAND, MESSAGE_TYPE_ERROR);
+		if (!foundCall) sendMessage(MESSAGE_NO_MATCHING_COMMAND, "", MESSAGE_TYPE_ERROR);
 	}
 
 	SetConsoleTextAttribute(hConsole, 15);
@@ -225,9 +239,10 @@ void ConsoleHelp::call(std::string args)
 
 ConsoleCrash::ConsoleCrash()
 {
-	identifier = "crash";
-	description = "crashes the application";
-	help = "arguments: (none) \nexample usage: crash";
+	identifier = CONSOLE_INPUT_HANDLER_CRASH_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_CRASH_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_CRASH_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_CRASH_EXAMPLE_USAGE;
 }
 
 void ConsoleCrash::call(std::string args)
@@ -237,9 +252,10 @@ void ConsoleCrash::call(std::string args)
 
 ConsoleInfo::ConsoleInfo()
 {
-	identifier = "info";
-	description = "gives info about program";
-	help = "arguments: (none) \nexample usage: info";
+	identifier = CONSOLE_INPUT_HANDLER_INFO_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_INFO_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_INFO_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_INFO_EXAMPLE_USAGE;
 }
 
 
@@ -250,9 +266,10 @@ void ConsoleInfo::call(std::string args)
 
 ConsoleFileNew::ConsoleFileNew()
 {
-	identifier = "new";
-	description = "creates a new file";
-	help = "arguments: (none) \nexample usage: new";
+	identifier = CONSOLE_INPUT_HANDLER_FILE_NEW_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_FILE_NEW_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_FILE_NEW_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_NEW_EXAMPLE_USAGE;
 }
 
 void ConsoleFileNew::call(std::string args)
@@ -262,9 +279,10 @@ void ConsoleFileNew::call(std::string args)
 
 ConsoleFileMakeEdit::ConsoleFileMakeEdit()
 {
-	identifier = "makeEdit";
-	description = "makes a mock edit on the open file";
-	help = "arguments: (none) \nexample usage: makeEdit";
+	identifier = CONSOLE_INPUT_HANDLER_MAKE_EDIT_IDENTIFIER;
+	description = CONSOLE_INPUT_HANDLER_MAKE_EDIT_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_MAKE_EDIT_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_MAKE_EDIT_EXAMPLE_USAGE;
 }
 
 void ConsoleFileMakeEdit::call(std::string args)

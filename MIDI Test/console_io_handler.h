@@ -4,10 +4,10 @@
 
 class consoleInputHandler {
 protected:
-	std::string identifier;
-
-	std::string description;
-	std::string help;
+	int identifier;
+	int description;
+	int arguments;
+	int exampleUsage;
 
 public:
 	virtual void call(std::string args);
@@ -16,7 +16,9 @@ public:
 
 	std::string getDescription();
 
-	std::string getHelp();
+	std::string getArguments();
+
+	std::string getExampleUsage();
 
 	consoleInputHandler();
 

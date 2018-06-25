@@ -1,7 +1,2 @@
-﻿  MIDI Test.cpp
-  console_io_handler.cpp
-  files.cpp
-  midiLib.cpp
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(39): warning C4312: 'type cast': conversion from 'int' to 'char *' of greater size
-  Generating Code...
+﻿  multiLingual.cpp
   MIDI test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\HDSQs-MIDI-Editor\x64\Debug\MIDI test.exe
