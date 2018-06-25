@@ -40,7 +40,7 @@ void handleConsoleInput(std::string input)
 		}
 	}
 
-	if (!foundCall) sendMessage("Didn't find a matching command", MESSAGE_ERROR);
+	if (!foundCall) sendMessage(MESSAGE_NO_MATCHING_COMMAND, "", MESSAGE_TYPE_ERROR);
 
 }
 
@@ -89,7 +89,7 @@ void ConsoleFileOpen::call(std::string args)
 {
 	if (args == "") {
 
-		sendMessage("Expected a file name", MESSAGE_ERROR);
+		sendMessage(MESSAGE_NOT_VALID_FILENAME, "", MESSAGE_TYPE_ERROR);
 		return;
 
 	}
@@ -110,7 +110,7 @@ void ConsoleFileClose::call(std::string args)
 {
 	if (currentFile == NULL) // if file is not open
 	{
-		sendMessage("There aren't any open files", MESSAGE_ERROR);
+		sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR);
 		return;
 
 	}
@@ -129,7 +129,7 @@ void ConsoleFileSave::call(std::string args)
 {
 	if (currentFile == NULL) // if file is not open
 	{
-		sendMessage("There aren't any open files", MESSAGE_ERROR);
+		sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR);
 		return;
 
 	}
@@ -150,14 +150,14 @@ void ConsoleFileSaveAs::call(std::string args)
 {
 	if (currentFile == NULL) // if file is not open
 	{
-		sendMessage("There aren't any open files", MESSAGE_ERROR);
+		sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR);
 		return;
 
 	}
 
 	if (args == "") { // if no file name provided
 
-		sendMessage("Expected a file name", MESSAGE_ERROR);
+		sendMessage(MESSAGE_NOT_VALID_FILENAME, MESSAGE_TYPE_ERROR);
 		return;
 
 	}
@@ -216,7 +216,7 @@ void ConsoleHelp::call(std::string args)
 				break;
 			}			
 		}
-		if (!foundCall) sendMessage("Didn't find a matching command", MESSAGE_ERROR);
+		if (!foundCall) sendMessage(MESSAGE_NO_MATCHING_COMMAND, MESSAGE_TYPE_ERROR);
 	}
 
 	SetConsoleTextAttribute(hConsole, 15);

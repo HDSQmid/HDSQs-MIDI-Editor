@@ -13,7 +13,7 @@ file::file(std::string fileAddress)
 	//open file here
 
 	hasChanged = false;
-	std::string str = "Openned " + fileAddress;
+	std::string str = MESSAGE_OPEN_FILE + fileAddress;
 	sendMessage(str);
 
 }
@@ -21,7 +21,7 @@ file::file(std::string fileAddress)
 file::file()
 {
 	hasChanged = false;
-	std::string str = "Created new file";
+	std::string str = MESSAGE_NEW_FILE;
 	sendMessage(str);
 }
 
@@ -30,11 +30,11 @@ file::~file()
 	if (hasChanged) {
 
 		if (
-			 sendMessage("The file has unsaved changes. Would you like to save it?", MESSAGE_QUESTION, RESPONSE_YN) == "y"
+			 sendMessage(MESSAGE_FILE_UNSAVED, MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_YN) == "y"
 			) save();
 
 	}
-	sendMessage("File closed successfully");
+	sendMessage(MESSAGE_CLOSE_FILE);
 }
 
 void file::save()
@@ -42,7 +42,7 @@ void file::save()
 	if (hasChanged) {
 
 		if (location == "") {
-			location = sendMessage("Where would you like to save?", MESSAGE_QUESTION, RESPONSE_STRING);
+			location = sendMessage("Where would you like to save?", MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_STRING);
 			//check filename is valid
 		}
 
@@ -74,7 +74,7 @@ void file::makeEdit()
 		hasChanged = true;
 		sendMessage("Edit made");
 	}
-	else sendMessage("Can't make edit unless there is a file open", MESSAGE_ERROR, RESPONSE_OK);
+	else sendMessage(MESSAGE_NO_FILE_OPEN, MESSAGE_TYPE_ERROR, MESSAGE_RESPONSE_OK);
 }
 
 //the one that actually saves the file

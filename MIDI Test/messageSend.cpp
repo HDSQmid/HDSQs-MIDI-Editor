@@ -22,7 +22,7 @@ std::string chooseYN() {
 
 }
 
-std::string sendMessage(std::string message, int title, int response)
+std::string sendMessage(std::string message, std::string args, int title, int response)
 {
 #ifdef CONSOLE
 
@@ -33,24 +33,25 @@ std::string sendMessage(std::string message, int title, int response)
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	std::string titleS;
 
+	// replace this with get translation function
 	switch (title) {
-	case MESSAGE_ERROR:
+	case MESSAGE_TYPE_ERROR:
 			colour = 6; // orange
 			titleS = "Error";
 			break; 
-	case MESSAGE_MESSAGE: 
+	case MESSAGE_TYPE_MESSAGE: 
 			colour = 1; // blue
 			titleS = "Message";
 			break; 
-	case MESSAGE_HELP:
+	case MESSAGE_TYPE_HELP:
 			colour = 2; // green
 			titleS = "Help";
 			break;
-	case MESSAGE_TIP:
+	case MESSAGE_TYPE_TIP:
 			colour = 2; // green
 			titleS = "Tip";
 			break; 
-	case MESSAGE_QUESTION:
+	case MESSAGE_TYPE_QUESTION:
 			colour = 5; // purple
 			titleS = "Question";
 			break;
@@ -72,13 +73,13 @@ std::string sendMessage(std::string message, int title, int response)
 	// get response
 	switch (response) {
 
-	case RESPONSE_OK:
+	case MESSAGE_RESPONSE_OK:
 		return "Ok";
 
-	case RESPONSE_YN:
+	case MESSAGE_RESPONSE_YN:
 		return chooseYN();
 
-	case RESPONSE_STRING:
+	case MESSAGE_RESPONSE_STRING:
 		std::getline(std::cin, ret);
 		return ret;
 		
