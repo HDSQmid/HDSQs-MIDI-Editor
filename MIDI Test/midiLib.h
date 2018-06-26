@@ -1,19 +1,36 @@
 #pragma once
 
+// MIDI Library
+// 
+// midi events are stored on tracks.
+// events that affect the entire midi (eg tempo) are stored on system track.
+// events that affect entire channels are stored in their relaive channel tracks (0-15).
+// notes are stored in patterns.
+// patterns contain multiple midi tracks all with notes.
+// the midi object has tracks which references to patterns are placed on.
+// in the gui, patterns will be shown taking up their relative number of tracks, and length.
+// a pattern can be used as many times as neccisary, and will not consume much more RAM because duplicating it only creates a reference to the pattern.
+// This means a change in one instance of the pattern affects all instances.
+// there will be an option to create a derived pattern (eg pattern A could have a derived pattern A1. These patterns have seperate memory, so a change in one does not affect the other.
+// by using references, memory consumption could be minimised, although it will increase the exporting time.
+// when a midi is imported, it is all imported to the one pattern (unless someone wants to write an intelligent script to sort tracks into patterns, any volenteers? I didn't think so.)
+// 
+
+
 //define midi events
 /*System*/
-#define MIDI_TEMPO (1)
-#define MIDI_TIME_SIGNATURE (2)
-#define MIDI_KEY (3)
-#define MIDI_MARK (4)
+#define MIDI_TEMPO (-1)
+#define MIDI_TIME_SIGNATURE (-2)
+#define MIDI_KEY (-3)
+#define MIDI_MARK (-4)
 /*Channel*/
-#define MIDI_INSTRUMENT (1001)
-#define MIDI_EXPRESSION (1002)
-#define MIDI_VOLUME (1003)
-#define MIDI_PAN (1004)
-#define MIDI_PITCH_BEND (1005)
+#define MIDI_INSTRUMENT (-1001)
+#define MIDI_EXPRESSION (-1002)
+#define MIDI_VOLUME (-1003)
+#define MIDI_PAN (-1004)
+#define MIDI_PITCH_BEND (-1005)
 /*Track*/
-#define MIDI_NOTE (2001)
+#define MIDI_NOTE (-2001)
 
 class MidiPosition {
 public:
@@ -165,6 +182,24 @@ public:
 };
 
 //class pattern contains midi tracks
+class MidiPattern {
+
+	std::string name;
+
+	std::vector<MidiTrack> tracks;
+
+	int length; // length of midi pattern in ticks
+
+};
+
+//class patternImplement is used by Midi object to add patterns to the midi
+class Pattern {
+
+	MidiPattern * pattern;
+
+	MidiPosition startLocation;
+
+};
 
 //
 //class MIDI: container for MIDI files
@@ -175,8 +210,9 @@ class Midi {
 
 		EventTrack channelEvents[16];
 
-		std::vector<MidiTrack> tracks;
+		std::vector<Pattern> PatternImpl; // the actual song
 
+		std::vector<MidiPattern> Patterns; // store of patterns ready for use:tm:
 		
 		std::string name, copyright, description;
 		int PPQN = 960;
@@ -201,13 +237,12 @@ public:
 		unsigned long int getNoteCount();
 
 		//functions for tracks
-		void addTrack(std::string name = "");
+		void addPattern(std::string name = "");
 
-		void removeTrack(int trackNum);
+		void removePattern(int patternName);
 
-		void renameTrack(std::string newName);
+		void renamePattern(std::string newName);
 
-		void changeTrackChannel(int newChannel);
 
 	};
 
