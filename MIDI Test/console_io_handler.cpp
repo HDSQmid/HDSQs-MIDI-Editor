@@ -30,7 +30,6 @@ void handleConsoleInput(std::string input)
 	std::string args = oss.str();
 	if(args != "") args = args.substr(1);
 
-	//reverse translate std::string test
 
 	//remove command from rest of arguments for easier processing
 
@@ -52,9 +51,10 @@ void handleConsoleInput(std::string input)
 
 consoleInputHandler::consoleInputHandler()
 {
-	identifier = CONSOLE_INPUT_HANDLER_DEFAULT_IDENTIFIER;
+	identifier = "NULL";
 	description = CONSOLE_INPUT_HANDLER_DEFAULT_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_DEFAULT_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_DEFAULT_EXAMPLE_USAGE;
 }
 
 void consoleInputHandler::call(std::string args)
@@ -66,7 +66,7 @@ void consoleInputHandler::call(std::string args)
 
 std::string consoleInputHandler::getIdentifier()
 {
-	return translate(identifier);
+	return identifier;
 }
 
 std::string consoleInputHandler::getDescription()
@@ -88,7 +88,7 @@ std::string consoleInputHandler::getExampleUsage()
 
 ConsoleFileOpen::ConsoleFileOpen()
 {
-	identifier = CONSOLE_INPUT_HANDLER_FILE_OPEN_IDENTIFIER; 
+	identifier = "open"; 
 	description = CONSOLE_INPUT_HANDLER_FILE_OPEN_DESCRIPTION; 
 	arguments = CONSOLE_INPUT_HANDLER_FILE_OPEN_ARGUMENTS; 
 	exampleUsage = CONSOLE_INPUT_HANDLER_DEFAULT_EXAMPLE_USAGE;
@@ -110,7 +110,7 @@ void ConsoleFileOpen::call(std::string args)
 
 ConsoleFileClose::ConsoleFileClose()
 {
-	identifier = CONSOLE_INPUT_HANDLER_FILE_CLOSE_IDENTIFIER;
+	identifier = "close";
 	description = CONSOLE_INPUT_HANDLER_FILE_CLOSE_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_FILE_CLOSE_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_CLOSE_EXAMPLE_USAGE;
@@ -130,7 +130,7 @@ void ConsoleFileClose::call(std::string args)
 
 ConsoleFileSave::ConsoleFileSave()
 {
-	identifier = CONSOLE_INPUT_HANDLER_FILE_SAVE_IDENTIFIER;
+	identifier = "save";
 	description = CONSOLE_INPUT_HANDLER_FILE_SAVE_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_FILE_SAVE_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_SAVE_EXAMPLE_USAGE;
@@ -152,7 +152,7 @@ void ConsoleFileSave::call(std::string args)
 
 ConsoleFileSaveAs::ConsoleFileSaveAs()
 {
-	identifier = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_IDENTIFIER;
+	identifier = "saveAs";
 	description = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_SAVE_AS_EXAMPLE_USAGE;
@@ -179,7 +179,7 @@ void ConsoleFileSaveAs::call(std::string args)
 
 ConsoleQuit::ConsoleQuit()
 {
-	identifier = CONSOLE_INPUT_HANDLER_QUIT_IDENTIFIER;
+	identifier = "quit";
 	description = CONSOLE_INPUT_HANDLER_QUIT_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_QUIT_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_QUIT_EXAMPLE_USAGE;
@@ -193,7 +193,7 @@ void ConsoleQuit::call(std::string args)
 
 ConsoleHelp::ConsoleHelp()
 {
-	identifier = CONSOLE_INPUT_HANDLER_HELP_IDENTIFIER;
+	identifier = "help";
 	description = CONSOLE_INPUT_HANDLER_HELP_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_HELP_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_HELP_EXAMPLE_USAGE;
@@ -239,7 +239,7 @@ void ConsoleHelp::call(std::string args)
 
 ConsoleCrash::ConsoleCrash()
 {
-	identifier = CONSOLE_INPUT_HANDLER_CRASH_IDENTIFIER;
+	identifier = "crash";
 	description = CONSOLE_INPUT_HANDLER_CRASH_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_CRASH_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_CRASH_EXAMPLE_USAGE;
@@ -252,7 +252,7 @@ void ConsoleCrash::call(std::string args)
 
 ConsoleInfo::ConsoleInfo()
 {
-	identifier = CONSOLE_INPUT_HANDLER_INFO_IDENTIFIER;
+	identifier = "info";
 	description = CONSOLE_INPUT_HANDLER_INFO_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_INFO_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_INFO_EXAMPLE_USAGE;
@@ -266,7 +266,7 @@ void ConsoleInfo::call(std::string args)
 
 ConsoleFileNew::ConsoleFileNew()
 {
-	identifier = CONSOLE_INPUT_HANDLER_FILE_NEW_IDENTIFIER;
+	identifier = "new";
 	description = CONSOLE_INPUT_HANDLER_FILE_NEW_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_FILE_NEW_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_NEW_EXAMPLE_USAGE;
@@ -279,7 +279,7 @@ void ConsoleFileNew::call(std::string args)
 
 ConsoleFileMakeEdit::ConsoleFileMakeEdit()
 {
-	identifier = CONSOLE_INPUT_HANDLER_MAKE_EDIT_IDENTIFIER;
+	identifier = "makeEdit";
 	description = CONSOLE_INPUT_HANDLER_MAKE_EDIT_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_MAKE_EDIT_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_MAKE_EDIT_EXAMPLE_USAGE;

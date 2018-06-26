@@ -164,6 +164,8 @@ public:
 
 };
 
+//class pattern contains midi tracks
+
 //
 //class MIDI: container for MIDI files
 //

@@ -56,17 +56,20 @@ std::string sendMessage(int message, std::string args, int title, int response)
 			colour = 5; // purple
 			titleS = translate(MESSAGE_TYPE_QUESTION);
 			break;
+	case MESSAGE_TYPE_CRITICAL_ERROR:
+		colour = 4; // orange
+		titleS = translate(MESSAGE_TYPE_CRITICAL_ERROR);
+		break;
 	default: 
-			colour = 4; // red
+			colour = 15;
 			SetConsoleTextAttribute(hConsole, colour);
-			std::cout << "System Error: Unknown message title" << std::endl;
+			titleS = translate(MESSAGE_TYPE_UNKNOWN);
 			SetConsoleTextAttribute(hConsole, 15); // return text colour to normal before returning
-			return  "Error";
 
 	} 
 
 	SetConsoleTextAttribute(hConsole, colour);
-	std::cout << titleS << ": \t\t" << translate(message) << std::endl;
+	std::cout << titleS << ": \t\t" << translate(message) << " " << args << std::endl;
 	SetConsoleTextAttribute(hConsole, 15); // return text colour to normal before returning
 
 	std::string ret = "";
@@ -75,22 +78,24 @@ std::string sendMessage(int message, std::string args, int title, int response)
 	switch (response) {
 
 	case MESSAGE_RESPONSE_OK:
-		return "Ok";
-
+		ret = "Ok";
+		break;
 	case MESSAGE_RESPONSE_YN:
-		return chooseYN();
-
+		ret = chooseYN();
+		break;
 	case MESSAGE_RESPONSE_STRING:
 		std::getline(std::cin, ret);
-		return ret;
+		break;
 		
 	default:
 		colour = 4; // red
 		SetConsoleTextAttribute(hConsole, colour);
-		std::cout << "System Error: Unknown response type" << std::endl;
+		std::cout << translate(MESSAGE_RESPONSE_UNKNOWN) << std::endl;
 		SetConsoleTextAttribute(hConsole, 15); // return text colour to normal before returning
-		return "Error";
+		ret = "Error";
 	}
+
+	return ret;
 
 #endif //  CONSOLE
 

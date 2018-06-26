@@ -4,7 +4,7 @@
 
 class consoleInputHandler {
 protected:
-	int identifier;
+	std::string identifier;
 	int description;
 	int arguments;
 	int exampleUsage;

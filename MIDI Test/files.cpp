@@ -22,6 +22,7 @@ midiFile::midiFile()
 {
 	hasChanged = false;
 	sendMessage(MESSAGE_NEW_FILE);
+	location = "";
 }
 
 midiFile::~midiFile()
@@ -41,13 +42,14 @@ void midiFile::save()
 	if (hasChanged) {
 
 		if (location == "") {
-			location = sendMessage(STRING_ENTER_SAVE_LOCATION,"" ,MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_STRING);
+			location = sendMessage(STRING_ENTER_SAVE_LOCATION, "",MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_STRING);
 			//check filename is valid
 		}
 
 		saveFile();
 
 		sendMessage(MESSAGE_FILE_SAVED, location);
+		hasChanged = false;
 	}
 	else {
 
@@ -60,9 +62,13 @@ void midiFile::save()
 void midiFile::saveAs(std::string newFileName)
 {
 	location = newFileName;
+	if (location == "") {
+		location = sendMessage(STRING_ENTER_SAVE_LOCATION, "", MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_STRING);
+		//check filename is valid
+	}
 	saveFile();
 	sendMessage(MESSAGE_FILE_SAVED_AS, location);
-
+	hasChanged = false;
 }
 
 void midiFile::makeEdit()
