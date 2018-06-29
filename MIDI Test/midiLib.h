@@ -179,23 +179,51 @@ public:
 
 	int TrackChannel;
 
+public:
+
+	void setName(std::string newName);
+
+};
+
+class TrackImpl {
+
+	int channelNum;
+
 };
 
 //class pattern contains midi tracks
-class MidiPattern {
+class Pattern {
 
 	std::string name;
 
-	std::vector<MidiTrack> tracks;
+	std::vector<Track> tracks;
 
-	int length; // length of midi pattern in ticks
+	int length = 0; // length of midi pattern in ticks
+
+public:
+	Pattern();
+
+	Pattern(std::string name);
+
+	void setName(std::string newName);
+
+	//functions for editing
+	void openTrack(int trackNumber);
+
+	void closeTrack();
+
+	void newTrack();
+
+	void removeTrack(int patternNum);
+
+	void renameTrack(int patternNum, std::string newName);
 
 };
 
 //class patternImplement is used by Midi object to add patterns to the midi
-class Pattern {
+class PatternImpl {
 
-	MidiPattern * pattern;
+	Pattern * pattern;
 
 	MidiPosition startLocation;
 
@@ -210,9 +238,11 @@ class Midi {
 
 		EventTrack channelEvents[16];
 
-		std::vector<Pattern> PatternImpl; // the actual song
+		std::vector<TrackImpl> tracks;
 
-		std::vector<MidiPattern> Patterns; // store of patterns ready for use:tm:
+		std::vector<PatternImpl> PatternImpl; // the actual song
+
+		std::vector<Pattern> Patterns; // store of patterns ready for use:tm:
 		
 		std::string name, copyright, description;
 		int PPQN = 960;
@@ -236,13 +266,18 @@ public:
 
 		unsigned long int getNoteCount();
 
-		//functions for tracks
-		void addPattern(std::string name = "");
+		//functions for patterns
+		void newPattern();
 
-		void removePattern(int patternName);
+		void removePattern(int patternNum);
 
-		void renamePattern(std::string newName);
+		void renamePattern(int patternNum, std::string newName);
 
+		void openPattern(int patternNum);
+
+		void closePattern();
 
 	};
 
+extern Pattern * currentPattern;
+extern Track * currentTrack;

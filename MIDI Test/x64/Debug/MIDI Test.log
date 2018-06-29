@@ -1,8 +1,11 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MIDI Test.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  stdafx.cpp
   MIDI Editor.cpp
   console_io_handler.cpp
   files.cpp
   messageSend.cpp
+  midiLib.cpp
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(39): warning C4312: 'type cast': conversion from 'int' to 'char *' of greater size
   multiLingual.cpp
   Generating Code...
   MIDI test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\HDSQs-MIDI-Editor\x64\Debug\MIDI Editor.exe

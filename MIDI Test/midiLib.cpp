@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "midiLib.h"
+#include "multiLingual.h"
 
-
-
+// midi events
 
 MidiEvent::MidiEvent(int type, int value)
 {
@@ -124,11 +124,13 @@ void MidiTempo::setValue(int val)
 	}
 }
 
+//midi object
+
 Midi::Midi()
 {
-	name = "";
-	copyright = "";
-	description = "MIDI made in " APP_NAME;
+	name = translate(DEFAULT_MIDI_NAME);
+	copyright = translate(DEFAULT_COPYRIGHT_INFO);
+	description = translate(STRING_MIDI_MADE_IN) + " " APP_NAME;
 }
 
 void Midi::setName(std::string newName)
@@ -185,4 +187,80 @@ unsigned long int Midi::getNoteCount()
 	// calculate number of notes in midi
 
 	return 0;
+}
+
+//patterns
+Pattern * currentPattern = NULL;
+
+void Midi::newPattern()
+{
+	Patterns.push_back(Pattern());
+}
+
+void Midi::removePattern(int patternNum)
+{
+	Patterns.erase(Patterns.begin() + patternNum);
+}
+
+void Midi::renamePattern(int patternNum, std::string newName)
+{
+	Patterns[patternNum].setName(newName);
+}
+
+void Midi::openPattern(int patternNum)
+{
+	currentPattern = &Patterns[patternNum];
+}
+
+void Midi::closePattern()
+{
+	currentPattern = NULL;
+}
+
+Pattern::Pattern()
+{
+	name = translate(DEFAULT_PATTERN_NAME);
+}
+
+Pattern::Pattern(std::string name)
+{
+	this->name = name;
+}
+
+void Pattern::setName(std::string newName)
+{
+	name = newName;
+}
+
+void Pattern::openTrack(int trackNumber)
+{
+	currentTrack = &tracks[trackNumber];
+}
+
+void Pattern::closeTrack()
+{
+	currentTrack = NULL;
+}
+
+void Pattern::newTrack()
+{
+	tracks.push_back(Track());
+}
+
+void Pattern::removeTrack(int patternNum)
+{
+	tracks.erase(tracks.begin() + patternNum);
+}
+
+void Pattern::renameTrack(int patternNum, std::string newName)
+{
+	tracks[patternNum].setName(newName);
+}
+
+//tracks
+Track * currentTrack = NULL;
+
+void Track::setName(std::string newName)
+{
+	trackName = newName;
 }

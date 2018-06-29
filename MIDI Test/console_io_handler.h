@@ -24,6 +24,42 @@ public:
 
 };
 
+// program stuff
+
+class ConsoleQuit : public consoleInputHandler {
+public:
+	ConsoleQuit();
+
+	void call(std::string args);
+
+};
+
+class ConsoleHelp : public consoleInputHandler {
+public:
+	ConsoleHelp();
+
+	void call(std::string args);
+
+};
+
+class ConsoleCrash : public consoleInputHandler {
+public:
+	ConsoleCrash();
+
+	void call(std::string args);
+
+};
+
+class ConsoleInfo : public consoleInputHandler {
+public:
+	ConsoleInfo();
+
+	void call(std::string args);
+
+};
+
+// files
+
 class ConsoleFileOpen : public consoleInputHandler {
 public:
 	ConsoleFileOpen();
@@ -64,41 +100,44 @@ public:
 
 };
 
-class ConsoleFileMakeEdit : public consoleInputHandler { // for debug purposes
+
+// midi editing stuff
+
+class ConsoleMidiMakeEdit : public consoleInputHandler { // for debug purposes
 public:
-	ConsoleFileMakeEdit();
+	ConsoleMidiMakeEdit();
 
 	void call(std::string args);
 
 };
 
-class ConsoleQuit : public consoleInputHandler {
+class ConsoleMidiPattern : public consoleInputHandler { // make edits to patterns
 public:
-	ConsoleQuit();
+	ConsoleMidiPattern();
 
 	void call(std::string args);
 
 };
 
-class ConsoleHelp : public consoleInputHandler {
+class ConsoleMidiTrack : public consoleInputHandler { // make edits to tracks
 public:
-	ConsoleHelp();
+	ConsoleMidiTrack();
 
 	void call(std::string args);
 
 };
 
-class ConsoleCrash : public consoleInputHandler {
+class ConsoleMidiSelect : public consoleInputHandler { // select midi objects
 public:
-	ConsoleCrash();
+	ConsoleMidiSelect();
 
 	void call(std::string args);
 
 };
 
-class ConsoleInfo : public consoleInputHandler {
-public:
-	ConsoleInfo();
+class ConsoleMidiSelection : public consoleInputHandler { // performs actions on selected midi objects
+
+	ConsoleMidiSelection();
 
 	void call(std::string args);
 

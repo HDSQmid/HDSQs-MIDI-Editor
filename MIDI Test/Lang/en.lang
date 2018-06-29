@@ -1,5 +1,6 @@
 English
 
+0 Null
 
 1 Message
 2 Error
@@ -37,6 +38,12 @@ English
 2005 Example Usage
 2006 An critical error has occurred, which has caused the application to crash.
 2007 The application will attempt to save your project.
+2008 Midi created with
+
+3001 New Midi
+3002 New pattern
+3003 New track
+3010 Copyright (c)
 
 
 100012 Does nothing
@@ -82,3 +89,19 @@ English
 100112 Makes a mock edit to the open file
 100113 (none)
 100114 makeEdit
+
+100122 Performs actions on patterns
+100123 Not implemented yet
+100124 (maybe) pattern add, pattern remove Pattern 1, etc
+
+100132 Performs actions on tracks
+100133 Not implemented yet
+100134 (maybe) track add, track remove Track 1, etc
+
+100142 Selects things
+100143 selectionCriteria(s)
+100144 (maybe) select notes velocity < 15
+
+100152 Performs actions on the current selection
+100153 action
+100154 (probably) selection delete

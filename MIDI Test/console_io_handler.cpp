@@ -11,7 +11,7 @@ ConsoleFileOpen openFile;
 ConsoleFileClose closeFile;
 ConsoleFileSave saveFile;
 ConsoleFileSaveAs saveFileAs;
-ConsoleFileMakeEdit makeEdit;
+ConsoleMidiMakeEdit makeEdit;
 ConsoleCrash crash;
 ConsoleInfo info;
 
@@ -47,6 +47,8 @@ void handleConsoleInput(std::string input)
 }
 
 /***************************************/
+
+//implement multi-layered console input handler
 
 
 consoleInputHandler::consoleInputHandler()
@@ -85,6 +87,8 @@ std::string consoleInputHandler::getExampleUsage()
 }
 
 /***************************************/
+
+// files
 
 ConsoleFileOpen::ConsoleFileOpen()
 {
@@ -177,6 +181,21 @@ void ConsoleFileSaveAs::call(std::string args)
 	currentFile->saveAs(args);
 }
 
+ConsoleFileNew::ConsoleFileNew()
+{
+	identifier = "new";
+	description = CONSOLE_INPUT_HANDLER_FILE_NEW_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_FILE_NEW_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_NEW_EXAMPLE_USAGE;
+}
+
+void ConsoleFileNew::call(std::string args)
+{
+	fileNew();
+}
+
+// program functions
+
 ConsoleQuit::ConsoleQuit()
 {
 	identifier = "quit";
@@ -264,20 +283,9 @@ void ConsoleInfo::call(std::string args)
 	sendGreeting();
 }
 
-ConsoleFileNew::ConsoleFileNew()
-{
-	identifier = "new";
-	description = CONSOLE_INPUT_HANDLER_FILE_NEW_DESCRIPTION;
-	arguments = CONSOLE_INPUT_HANDLER_FILE_NEW_ARGUMENTS;
-	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_NEW_EXAMPLE_USAGE;
-}
+// midi functions
 
-void ConsoleFileNew::call(std::string args)
-{
-	fileNew();
-}
-
-ConsoleFileMakeEdit::ConsoleFileMakeEdit()
+ConsoleMidiMakeEdit::ConsoleMidiMakeEdit()
 {
 	identifier = "makeEdit";
 	description = CONSOLE_INPUT_HANDLER_MAKE_EDIT_DESCRIPTION;
@@ -285,7 +293,64 @@ ConsoleFileMakeEdit::ConsoleFileMakeEdit()
 	exampleUsage = CONSOLE_INPUT_HANDLER_MAKE_EDIT_EXAMPLE_USAGE;
 }
 
-void ConsoleFileMakeEdit::call(std::string args)
+void ConsoleMidiMakeEdit::call(std::string args)
 {
 	currentFile->makeEdit();
+}
+
+ConsoleMidiPattern::ConsoleMidiPattern()
+{
+	identifier = "pattern";
+	description = CONSOLE_INPUT_HANDLER_MIDI_PATTERN_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_MIDI_PATTERN_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_MIDI_PATTERN_EXAMPLE_USAGE;
+}
+
+void ConsoleMidiPattern::call(std::string args)
+{
+	// determine request type
+
+	// based on request type perform different actions, parse remaining arguments
+
+}
+
+ConsoleMidiTrack::ConsoleMidiTrack()
+{
+	identifier = "track";
+	description = CONSOLE_INPUT_HANDLER_MIDI_TRACK_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_MIDI_TRACK_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_MIDI_TRACK_EXAMPLE_USAGE;
+}
+
+void ConsoleMidiTrack::call(std::string args)
+{
+	// determine request type
+
+	// based on request type, perform action
+}
+
+ConsoleMidiSelect::ConsoleMidiSelect()
+{
+	identifier = "select";
+	description = CONSOLE_INPUT_HANDLER_MIDI_SELECT_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_MIDI_SELECT_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_MIDI_SELECT_EXAMPLE_USAGE;
+}
+
+void ConsoleMidiSelect::call(std::string args)
+{
+	// use arguments to determine what to select, then select it
+}
+
+ConsoleMidiSelection::ConsoleMidiSelection()
+{
+	identifier = "selection";
+	description = CONSOLE_INPUT_HANDLER_MIDI_SELECTION_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_MIDI_SELECTION_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_MIDI_SELECTION_EXAMPLE_USAGE;
+}
+
+void ConsoleMidiSelection::call(std::string args)
+{
+	// determine action to perform based on arguments
 }
