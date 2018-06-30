@@ -41,7 +41,7 @@
 #define MESSAGE_EDIT_MADE (1108) // 
 
 //miscellaneous strings
-#define STRING_VERSION (2000)
+#define MESSAGE_NO_TRANSLATION_FOUND (2000)
 #define STRING_GREETING_HELP (2001)
 #define STRING_ENTER_SAVE_LOCATION (2002)
 #define STRING_NO_CHANGES_DIDNT_SAVE (2003)
@@ -52,6 +52,7 @@
 #define STRING_MIDI_MADE_IN (2008)
 #define STRING_BUILD_DATE (2009)
 #define STRING_AT (2010)
+#define STRING_VERSION (2011)
 
 //default names for objects
 #define DEFAULT_MIDI_NAME (3001)

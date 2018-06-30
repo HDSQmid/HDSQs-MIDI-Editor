@@ -60,9 +60,19 @@ language::language(std::string fileName)
 	}
 }
 
+std::vector<language> langs;
+
 std::string translate(int ID)
 {
-	return defaultLn.translate(ID);
+	std::string str;
+	for (auto & testLang : langs) {
+		str = testLang.translate(ID);
+		if (str != "") break;
+	}
+	
+	if (str == "") str = translate(MESSAGE_NO_TRANSLATION_FOUND); // this could cause unending loop if no transdlation is found for this error
+
+	return str;
 }
 
 int reverseTranslate(std::string translation)
@@ -70,5 +80,4 @@ int reverseTranslate(std::string translation)
 	return 0;
 }
 
-language defaultLn("en.lang");
 

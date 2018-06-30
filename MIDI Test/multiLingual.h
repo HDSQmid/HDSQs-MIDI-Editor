@@ -22,8 +22,9 @@ public:
 
 };
 
+extern std::vector<language> langs;
+
 std::string translate(int ID);
 
 int reverseTranslate(std::string translation);
 
-extern language defaultLn;

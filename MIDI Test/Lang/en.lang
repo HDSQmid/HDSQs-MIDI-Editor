@@ -30,7 +30,7 @@ English
 1108 Edit Made
 
 
-2000 Version
+2000 Error: translation not found
 2001 Type "help" for help
 2002 Enter a location to save file
 2003 The file was unchanged. Didn't save.
@@ -41,6 +41,7 @@ English
 2008 Midi created with
 2009 Application built on
 2010 at
+2011 Version
 
 3001 New Midi
 3002 New pattern

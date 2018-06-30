@@ -3,9 +3,9 @@
 
 // class contains settings for consiguration of app
 class AppSettings {
-
 	// vector of language files that the application loads
-	//		into a vector of language objects
-
+	std::vector<std::string> languageFileAddresses;
+	
+	void addLanguage(std::string fileLoc);
 
 };
