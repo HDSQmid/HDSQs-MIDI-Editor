@@ -277,10 +277,9 @@ ConsoleInfo::ConsoleInfo()
 	exampleUsage = CONSOLE_INPUT_HANDLER_INFO_EXAMPLE_USAGE;
 }
 
-
 void ConsoleInfo::call(std::string args)
 {
-	sendGreeting();
+	printAppInfo();
 }
 
 // midi functions

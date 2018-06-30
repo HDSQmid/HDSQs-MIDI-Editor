@@ -107,3 +107,9 @@ void sendGreeting()
 	std::cout << APP_NAME << " " << translate(STRING_VERSION) << " " << APP_VERSION << std::endl;
 	std::cout << translate(STRING_GREETING_HELP) << std::endl;
 }
+
+void printAppInfo()
+{
+	std::cout << APP_NAME << " " << translate(STRING_VERSION) << " " << APP_VERSION << std::endl;
+	std::cout << translate(STRING_BUILD_DATE) << " " << __DATE__ << " " << translate(STRING_AT) << " " << __TIME__ << std::endl;
+}

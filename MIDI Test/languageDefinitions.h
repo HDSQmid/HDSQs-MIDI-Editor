@@ -50,6 +50,8 @@
 #define STRING_CRITICAL_ERROR_CRASH (2006)
 #define STRING_CRITICAL_ERROR_SAVE (2007)
 #define STRING_MIDI_MADE_IN (2008)
+#define STRING_BUILD_DATE (2009)
+#define STRING_AT (2010)
 
 //default names for objects
 #define DEFAULT_MIDI_NAME (3001)
