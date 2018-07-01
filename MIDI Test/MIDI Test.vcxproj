@@ -175,9 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Lang\en.lang" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="pigLatin.lang" />
+    <None Include="Lang\pigLatin.lang" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

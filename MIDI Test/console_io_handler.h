@@ -58,6 +58,16 @@ public:
 
 };
 
+// application settings
+
+class ConsoleSettingsAddLanguage : public consoleInputHandler {
+public:
+	ConsoleSettingsAddLanguage();
+
+	void call(std::string args);
+
+};
+
 // files
 
 class ConsoleFileOpen : public consoleInputHandler {

@@ -2,8 +2,9 @@
 #include "console_io_handler.h"
 #include "messageSend.h"
 #include "multiLingual.h"
+#include "settings.h"
 
-#define NUM_HANDLERS 10
+#define NUM_HANDLERS 11
 ConsoleQuit quit;
 ConsoleHelp help;
 ConsoleFileNew newFile;
@@ -14,8 +15,21 @@ ConsoleFileSaveAs saveFileAs;
 ConsoleMidiMakeEdit makeEdit;
 ConsoleCrash crash;
 ConsoleInfo info;
+ConsoleSettingsAddLanguage addLanguage;
 
-consoleInputHandler* input_handlers[NUM_HANDLERS] = { &help, &quit, &openFile, &newFile, &closeFile, &saveFile, &saveFileAs, &crash, &info, &makeEdit };
+consoleInputHandler* input_handlers[NUM_HANDLERS] = 
+{ 
+	&help, 
+	&quit, 
+	&openFile, 
+	&newFile, 
+	&closeFile, 
+	&saveFile, 
+	&saveFileAs, 
+	&crash, &info, 
+	&makeEdit, 
+	&addLanguage 
+};
 
 void handleConsoleInput(std::string input)
 {
@@ -28,7 +42,7 @@ void handleConsoleInput(std::string input)
 	oss << iss.rdbuf();
 
 	std::string args = oss.str();
-	if(args != "") args = args.substr(1);
+	if(args != "") args = args.substr(1); // remove space from start of string
 
 
 	//remove command from rest of arguments for easier processing
@@ -352,4 +366,17 @@ ConsoleMidiSelection::ConsoleMidiSelection()
 void ConsoleMidiSelection::call(std::string args)
 {
 	// determine action to perform based on arguments
+}
+
+ConsoleSettingsAddLanguage::ConsoleSettingsAddLanguage()
+{
+	identifier = "addLanguage";
+	description = CONSOLE_INPUT_HANDLER_SETTINGS_ADD_LANGUAGE_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_SETTINGS_ADD_LANGUAGE_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_SETTINGS_ADD_LANGUAGE_EXAMPLE_USAGE;
+}
+
+void ConsoleSettingsAddLanguage::call(std::string args)
+{
+	settings.addLanguage(args);
 }

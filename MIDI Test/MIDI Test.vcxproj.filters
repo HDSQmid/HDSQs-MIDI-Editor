@@ -73,10 +73,8 @@
     <None Include="Lang\en.lang">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="pigLatin.lang">
+    <None Include="Lang\pigLatin.lang">
       <Filter>Resource Files</Filter>
-    </Text>
+    </None>
   </ItemGroup>
 </Project>

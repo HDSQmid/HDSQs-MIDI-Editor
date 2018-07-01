@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "multiLingual.h"
 #include "messageSend.h"
+#include "settings.h"
 
 void language::addTranslation(int ID, std::string translation)
 {
+	translation = translation.substr(1); // remove space from start of string
 	strs.insert(std::pair<int, std::string>(ID, translation));
 }
 
@@ -18,12 +20,9 @@ language::language(std::string fileName)
 {
 	std::string fileAddress = ".\\Lang\\" + fileName;
 
-	try { // attempt to import file
+		// attempt to import file
 		std::ifstream input;
 		  // import file
-
-		
-
 		input.open(fileAddress, std::ios::in);
 		if (input.is_open()) {
 
@@ -36,6 +35,7 @@ language::language(std::string fileName)
 			while (!input.eof()) {
 
 				std::getline(input, in); // get line from file
+				if (in == "") continue; // if line is blank skip that line
 				std::stringstream iss(in); // create stringstream
 				iss >> id; // get id as first word of stringstream
 				std::stringstream oss;
@@ -47,17 +47,18 @@ language::language(std::string fileName)
 				addTranslation(id, value); // add to map of translations
 
 			}
+			input.close();
+		}
+
+		else {
+
+			throw std::exception("Failed to open file");
 
 		}
 
+	
 
-	}
 
-	catch (...) {
-
-		std::cout << "An error ocurred while attempting to read the language file: " << fileAddress << std::endl;
-
-	}
 }
 
 std::vector<language> langs;
@@ -78,6 +79,32 @@ std::string translate(int ID)
 int reverseTranslate(std::string translation)
 {
 	return 0;
+}
+
+void refreshLanguages()
+{
+	langs.clear();
+	if (settings.languageFileAddresses.size()) {
+		std::string fileAddress; // file address of current language being accessed
+		for (int i = 0; i < settings.languageFileAddresses.size(); i++) {
+			fileAddress = settings.languageFileAddresses[i];
+			try{
+				langs.push_back(language(fileAddress));
+			}
+			catch (std::exception &e) {
+
+				std::cout << "An error ocurred while attempting to read the language file: " << fileAddress << std::endl;
+				std::cout << "Error: " << e.what() << std::endl;
+				
+			}
+
+			catch (...) {
+
+				std::cout << "An error ocurred while attempting to read the language file: " << fileAddress << std::endl;
+				
+			}
+		}
+	}
 }
 
 

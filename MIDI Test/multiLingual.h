@@ -28,3 +28,4 @@ std::string translate(int ID);
 
 int reverseTranslate(std::string translation);
 
+void refreshLanguages();
