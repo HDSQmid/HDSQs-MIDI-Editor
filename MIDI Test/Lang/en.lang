@@ -18,6 +18,7 @@ English
 
 
 1000 No commands matched your arguments.
+1001 Please provide a command.
 
 1100 Opened file.
 1101 Created new file.
@@ -28,6 +29,7 @@ English
 1106 Saved
 1107 Saved as
 1108 Edit Made
+1109 Added Language
 
 
 2000 Error: translation not found
@@ -42,6 +44,8 @@ English
 2009 Application built on
 2010 at
 2011 Version
+2012 Translation
+2013 Help for
 
 3001 New Midi
 3002 New pattern
@@ -55,43 +59,43 @@ English
 
 100022 Opens a file
 100023 fileName
-100024 open example.mid
+100024 example.mid
 
 100032 Closes the open file
 100033 (none)
-100034 close
+100034 
 
 100042 Saves the open file
 100043 (fileName)
-100044 save, save example2.mid
+100044 
 
 100052 Saves the open file under a new file name
 100053 fileName
-100054 saveAs example2.mid
+100054 example2.mid
 
 100062 Quits the application
 100063 (none)
-100064 quit
+100064 
 
 100072 Gives help on console commands
 100073 (commandName)
-100074 help, help open
+100074 open
 
 100082 Crashes the application
 100083 (none)
-100084 crash
+100084 
 
 100092 Prints application info
 100093 (none)
-100094 info
+100094 
 
 100102 Creates a new file
 100103 (none)
-100104 new
+100104 
 
 100112 Makes a mock edit to the open file
 100113 (none)
-100114 makeEdit
+100114 
 
 100122 Performs actions on patterns
 100123 Not implemented yet
@@ -108,3 +112,11 @@ English
 100152 Performs actions on the current selection
 100153 action
 100154 (probably) selection delete
+
+100162 Adds a language
+100163 fileName
+100164 en.lang
+
+100172 Prints the translation of an integer message code
+100173 messageCode
+100174 printTranslation 0

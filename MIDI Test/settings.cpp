@@ -6,9 +6,11 @@
 void AppSettings::addLanguage(std::string fileLoc, bool echo)
 {
 	
-	languageFileAddresses.push_back(fileLoc);
+	languageFileAddresses.insert(languageFileAddresses.begin(), fileLoc);
 	refreshLanguages();
 	if (echo) sendMessage(MESSAGE_ADDED_LANGUAGE);
+
+	// todo: if language adding fails, remove the language from the list
 
 }
 

@@ -2,7 +2,11 @@
 #include "stdafx.h"
 #include "files.h"
 
-class consoleInputHandler {
+
+
+#define NUM_HANDLERS 13
+
+class ConsoleInputHandler {
 protected:
 	std::string identifier;
 	int description;
@@ -20,13 +24,19 @@ public:
 
 	std::string getExampleUsage();
 
-	consoleInputHandler();
+	ConsoleInputHandler();
 
 };
 
+extern ConsoleInputHandler * input_handlers[];
+
+// other input handlers here
+#include "pattern_input_handlers.h"
+
+
 // program stuff
 
-class ConsoleQuit : public consoleInputHandler {
+class ConsoleQuit : public ConsoleInputHandler {
 public:
 	ConsoleQuit();
 
@@ -34,7 +44,7 @@ public:
 
 };
 
-class ConsoleHelp : public consoleInputHandler {
+class ConsoleHelp : public ConsoleInputHandler {
 public:
 	ConsoleHelp();
 
@@ -42,7 +52,7 @@ public:
 
 };
 
-class ConsoleCrash : public consoleInputHandler {
+class ConsoleCrash : public ConsoleInputHandler {
 public:
 	ConsoleCrash();
 
@@ -50,7 +60,7 @@ public:
 
 };
 
-class ConsoleInfo : public consoleInputHandler {
+class ConsoleInfo : public ConsoleInputHandler {
 public:
 	ConsoleInfo();
 
@@ -58,9 +68,18 @@ public:
 
 };
 
+class ConsolePrintTranslation : public ConsoleInputHandler {
+public:
+	ConsolePrintTranslation();
+
+	void call(std::string args);
+
+
+};
+
 // application settings
 
-class ConsoleSettingsAddLanguage : public consoleInputHandler {
+class ConsoleSettingsAddLanguage : public ConsoleInputHandler {
 public:
 	ConsoleSettingsAddLanguage();
 
@@ -70,7 +89,7 @@ public:
 
 // files
 
-class ConsoleFileOpen : public consoleInputHandler {
+class ConsoleFileOpen : public ConsoleInputHandler {
 public:
 	ConsoleFileOpen();
 
@@ -78,7 +97,7 @@ public:
 
 };
 
-class ConsoleFileNew : public consoleInputHandler {
+class ConsoleFileNew : public ConsoleInputHandler {
 public:
 	ConsoleFileNew();
 
@@ -86,7 +105,7 @@ public:
 
 };
 
-class ConsoleFileClose : public consoleInputHandler {
+class ConsoleFileClose : public ConsoleInputHandler {
 public:
 	ConsoleFileClose();
 
@@ -94,7 +113,7 @@ public:
 
 };
 
-class ConsoleFileSave : public consoleInputHandler {
+class ConsoleFileSave : public ConsoleInputHandler {
 public:
 	ConsoleFileSave();
 
@@ -102,7 +121,7 @@ public:
 
 };
 
-class ConsoleFileSaveAs : public consoleInputHandler {
+class ConsoleFileSaveAs : public ConsoleInputHandler {
 public:
 	ConsoleFileSaveAs();
 
@@ -113,7 +132,7 @@ public:
 
 // midi editing stuff
 
-class ConsoleMidiMakeEdit : public consoleInputHandler { // for debug purposes
+class ConsoleMidiMakeEdit : public ConsoleInputHandler { // for debug purposes
 public:
 	ConsoleMidiMakeEdit();
 
@@ -121,15 +140,7 @@ public:
 
 };
 
-class ConsoleMidiPattern : public consoleInputHandler { // make edits to patterns
-public:
-	ConsoleMidiPattern();
-
-	void call(std::string args);
-
-};
-
-class ConsoleMidiTrack : public consoleInputHandler { // make edits to tracks
+class ConsoleMidiTrack : public ConsoleInputHandler { // make edits to tracks
 public:
 	ConsoleMidiTrack();
 
@@ -137,7 +148,7 @@ public:
 
 };
 
-class ConsoleMidiSelect : public consoleInputHandler { // select midi objects
+class ConsoleMidiSelect : public ConsoleInputHandler { // select midi objects
 public:
 	ConsoleMidiSelect();
 
@@ -145,7 +156,7 @@ public:
 
 };
 
-class ConsoleMidiSelection : public consoleInputHandler { // performs actions on selected midi objects
+class ConsoleMidiSelection : public ConsoleInputHandler { // performs actions on selected midi objects
 
 	ConsoleMidiSelection();
 
@@ -153,4 +164,4 @@ class ConsoleMidiSelection : public consoleInputHandler { // performs actions on
 
 };
 
-void handleConsoleInput(std::string input);
+void handleConsoleInput(std::string input, ConsoleInputHandler ** handlerList = input_handlers, int numHandlers = NUM_HANDLERS);

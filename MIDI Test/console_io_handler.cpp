@@ -4,7 +4,7 @@
 #include "multiLingual.h"
 #include "settings.h"
 
-#define NUM_HANDLERS 11
+
 ConsoleQuit quit;
 ConsoleHelp help;
 ConsoleFileNew newFile;
@@ -16,22 +16,27 @@ ConsoleMidiMakeEdit makeEdit;
 ConsoleCrash crash;
 ConsoleInfo info;
 ConsoleSettingsAddLanguage addLanguage;
+ConsolePrintTranslation printTranslation;
+ConsoleMidiPattern pattern;
 
-consoleInputHandler* input_handlers[NUM_HANDLERS] = 
-{ 
-	&help, 
-	&quit, 
-	&openFile, 
-	&newFile, 
-	&closeFile, 
-	&saveFile, 
-	&saveFileAs, 
-	&crash, &info, 
-	&makeEdit, 
-	&addLanguage 
+ConsoleInputHandler* input_handlers[NUM_HANDLERS] =
+{
+	&help,
+	&quit,
+	&openFile,
+	&newFile,
+	&closeFile,
+	&saveFile,
+	&saveFileAs,
+	&crash, &info,
+	&makeEdit,
+	&addLanguage,
+	&printTranslation,
+	&pattern
 };
 
-void handleConsoleInput(std::string input)
+
+void handleConsoleInput(std::string input, ConsoleInputHandler ** handlerList, int numHandlers)
 {
 
 	std::string test;
@@ -42,15 +47,20 @@ void handleConsoleInput(std::string input)
 	oss << iss.rdbuf();
 
 	std::string args = oss.str();
-	if(args != "") args = args.substr(1); // remove space from start of string
 
+	if (test == "") {
+		sendMessage(MESSAGE_NO_COMMAND_PROVIDED, "", MESSAGE_TYPE_ERROR);
+		return;
+	}
+
+	if(args != "") args = args.substr(1); // remove space from start of string
 
 	//remove command from rest of arguments for easier processing
 
 	bool foundCall = false; // bool for whether a handler was found
-	for (int i = 0; i < NUM_HANDLERS; i++) {
-		if (input_handlers[i]->getIdentifier() == test) {
-			input_handlers[i]->call(args);
+	for (int i = 0; i <numHandlers; i++) {
+		if (handlerList[i]->getIdentifier() == test) {
+			handlerList[i]->call(args);
 			foundCall = 1;
 			break;
 		}
@@ -65,7 +75,7 @@ void handleConsoleInput(std::string input)
 //implement multi-layered console input handler
 
 
-consoleInputHandler::consoleInputHandler()
+ConsoleInputHandler::ConsoleInputHandler()
 {
 	identifier = "NULL";
 	description = CONSOLE_INPUT_HANDLER_DEFAULT_DESCRIPTION;
@@ -73,31 +83,32 @@ consoleInputHandler::consoleInputHandler()
 	exampleUsage = CONSOLE_INPUT_HANDLER_DEFAULT_EXAMPLE_USAGE;
 }
 
-void consoleInputHandler::call(std::string args)
+void ConsoleInputHandler::call(std::string args)
 {
 
 	std::cout << "Test" << std::endl;
 
 }
 
-std::string consoleInputHandler::getIdentifier()
+std::string ConsoleInputHandler::getIdentifier()
 {
 	return identifier;
 }
 
-std::string consoleInputHandler::getDescription()
+std::string ConsoleInputHandler::getDescription()
 {
 	return translate(description);
 }
 
-std::string consoleInputHandler::getArguments()
+std::string ConsoleInputHandler::getArguments()
 {
 	return translate(arguments);
 }
 
-std::string consoleInputHandler::getExampleUsage()
+std::string ConsoleInputHandler::getExampleUsage()
 {
-	return translate(exampleUsage);
+	std::string str = identifier + " " + translate(exampleUsage);
+	return str;
 }
 
 /***************************************/
@@ -109,7 +120,7 @@ ConsoleFileOpen::ConsoleFileOpen()
 	identifier = "open"; 
 	description = CONSOLE_INPUT_HANDLER_FILE_OPEN_DESCRIPTION; 
 	arguments = CONSOLE_INPUT_HANDLER_FILE_OPEN_ARGUMENTS; 
-	exampleUsage = CONSOLE_INPUT_HANDLER_DEFAULT_EXAMPLE_USAGE;
+	exampleUsage = CONSOLE_INPUT_HANDLER_FILE_OPEN_EXAMPLE_USAGE;
 }
 
 void ConsoleFileOpen::call(std::string args)
@@ -256,9 +267,9 @@ void ConsoleHelp::call(std::string args)
 		bool foundCall = false; // bool for whether a handler was found
 		for (int i = 0; i < NUM_HANDLERS; i++) {
 			if (input_handlers[i]->getIdentifier() == args) {
-				std::cout << "help for " << input_handlers[i]->getIdentifier() << "\n" 
-					<< input_handlers[i]->getDescription() << "\n" 
-					<< input_handlers[i]->getArguments() << std::endl;
+				std::cout << translate(STRING_HELP_FOR) << " " << input_handlers[i]->getIdentifier() << "\n"
+					<< input_handlers[i]->getDescription() << "\n"
+					<< input_handlers[i]->getArguments() << "\n" << input_handlers[i]->getExampleUsage() << std::endl;
 				foundCall = 1;
 				break;
 			}			
@@ -280,7 +291,7 @@ ConsoleCrash::ConsoleCrash()
 
 void ConsoleCrash::call(std::string args)
 {
-	throw new std::exception("ForceQuit");
+	throw std::exception("Manually initiated crash");
 }
 
 ConsoleInfo::ConsoleInfo()
@@ -309,22 +320,6 @@ ConsoleMidiMakeEdit::ConsoleMidiMakeEdit()
 void ConsoleMidiMakeEdit::call(std::string args)
 {
 	currentFile->makeEdit();
-}
-
-ConsoleMidiPattern::ConsoleMidiPattern()
-{
-	identifier = "pattern";
-	description = CONSOLE_INPUT_HANDLER_MIDI_PATTERN_DESCRIPTION;
-	arguments = CONSOLE_INPUT_HANDLER_MIDI_PATTERN_ARGUMENTS;
-	exampleUsage = CONSOLE_INPUT_HANDLER_MIDI_PATTERN_EXAMPLE_USAGE;
-}
-
-void ConsoleMidiPattern::call(std::string args)
-{
-	// determine request type
-
-	// based on request type perform different actions, parse remaining arguments
-
 }
 
 ConsoleMidiTrack::ConsoleMidiTrack()
@@ -379,4 +374,20 @@ ConsoleSettingsAddLanguage::ConsoleSettingsAddLanguage()
 void ConsoleSettingsAddLanguage::call(std::string args)
 {
 	settings.addLanguage(args);
+}
+
+ConsolePrintTranslation::ConsolePrintTranslation()
+{
+	identifier = "printTranslation";
+	description = CONSOLE_INPUT_HANDLER_PRINT_TRANSLATION_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_PRINT_TRANSLATION_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_PRINT_TRANSLATION_EXAMPLE_USAGE;
+}
+
+void ConsolePrintTranslation::call(std::string args)
+{
+	std::stringstream ss(args);
+	int i;
+	ss >> i;
+	sendMessage(STRING_TRANSLATION, translate(i));
 }

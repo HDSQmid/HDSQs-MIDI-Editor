@@ -3,6 +3,7 @@
 #include "messageSend.h"
 #include "midiLib.h"
 
+// start with a new midi file
 midiFile* currentFile = NULL; // eventually make vector of open files
 
 
