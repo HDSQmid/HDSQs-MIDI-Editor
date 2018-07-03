@@ -26,3 +26,11 @@ public:
 	void call(std::string args);
 
 };
+
+class ConsolePatternRemove : public ConsoleInputHandler { // make edits to patterns
+public:
+	ConsolePatternRemove();
+
+	void call(std::string args);
+
+};

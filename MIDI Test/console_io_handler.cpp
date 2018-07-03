@@ -391,3 +391,11 @@ void ConsolePrintTranslation::call(std::string args)
 	ss >> i;
 	sendMessage(STRING_TRANSLATION, translate(i));
 }
+
+ConsoleRunScript::ConsoleRunScript()
+{
+	identifier = "run";
+	description = CONSOLE_INPUT_HANDLER_RUN_SCRIPT_DESCRIPTION;
+	arguments = CONSOLE_INPUT_HANDLER_RUN_SCRIPT_ARGUMENTS;
+	exampleUsage = CONSOLE_INPUT_HANDLER_RUN_SCRIPT_EXAMPLE_USAGE;
+}

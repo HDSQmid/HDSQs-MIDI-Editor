@@ -1,0 +1,40 @@
+HDSQ's MIDI Editor
+	Guide to contributing
+******************************
+
+
+If there's a feature you want to see in this program, and you know some programming, 
+it would be great if you helped me make it.
+
+
+You might want to familiarise yourself with the way that the application is organised.
+
+To put it simply, I haven't even finished Alpha 1 yet and its already more than 2000 lines 
+spread over more than 10 source files, so it might take some getting used to.
+
+***********************************************************************
+
+				Here's a nice little list that tells you how the source is organised
+
+MIDI Editor.cpp - main source file, contains basic application functions. Basically nothing is here.
+
+midiLib.h - will contain functions and classes needed to edit MIDIs, including patterns, tracks, notes and the encapsulating class, Midi
+	files.h - will contain functions and classes for containing files, as well as opening and saving them
+			including saving .hqp files and exporting .mid files
+these files are currently incomplete
+
+multiLingual.h - contains functions and classes needed to provide translations to anything that is sent as output
+	languageDefinitions.h - contains #defines of everything the program says as well as integer codes used by these
+			this file is edited anytime the application needs to say something new
+	.lang files - contain the integers mentioned above and then their corresponding translations for that language
+
+console_io_handler.h - contains handlers for console input
+
+messageSend.h - contains functions for sending messages to the user. currently only supports console output, but eventually Qt will be used to create a GUI.
+			this also contains functions for getting responses from the user.
+
+settings.h - contains the class for configuring the application
+
+************************************************************************
+
+I hope that this helps anyone that wants to contribute

@@ -77,6 +77,15 @@ public:
 
 };
 
+
+class ConsoleRunScript : public ConsoleInputHandler {
+public:
+	ConsoleRunScript();
+
+	void call(std::string args);
+
+};
+
 // application settings
 
 class ConsoleSettingsAddLanguage : public ConsoleInputHandler {

@@ -1,0 +1,12 @@
+HDSQ's MIDI Editor
+	Guide to scripting
+*************************************
+
+Scripting will eventually be able to be used to automate boring tasks for example, duplicating a pattern a million times or something
+
+It works with text files containing console input, line by line.
+Eventually, basic looping will be added, and maybe other stuff
+
+I'm currently considering adding scripts in a language such as Lua, but I might need help with this
+
+Basically type stuff into the text file that you would type into the console and it should work
