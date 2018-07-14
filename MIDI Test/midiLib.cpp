@@ -209,7 +209,7 @@ void Midi::renamePattern(int patternNum, std::string newName)
 
 void Midi::openPattern(int patternNum)
 {
-	currentPattern = &Patterns[patternNum];
+	Patterns[patternNum].open();
 }
 
 void Midi::closePattern()
@@ -263,4 +263,16 @@ Track * currentTrack = NULL;
 void Track::setName(std::string newName)
 {
 	trackName = newName;
+}
+
+patternSize::patternSize(int nlength, int nheight)
+{
+	length = nlength;
+	height = nheight;
+}
+
+patternSize::patternSize(MidiPosition startPos, MidiPosition endPos, int nheight)
+{
+	length = endPos - startPos; // use overloaded operator to calculate the length of the midi in ticks
+	height = nheight;
 }

@@ -32,6 +32,26 @@
 /*Track*/
 #define MIDI_NOTE (-2001)
 
+// class patternSize for returning length 
+class patternSize {
+protected:
+	int length, height;
+
+public:
+	patternSize(int nlength, int nheight);
+
+	patternSize(MidiPosition startPos, MidiPosition endPos, int height);
+
+	void setData(int length, int height);
+
+	void setData(MidiPosition startPos, MidiPosition endPos, int height);
+
+	int getLength();
+
+	int getHeight();
+
+};
+
 class MidiPosition {
 public:
 	unsigned int position; // position in ticks from start
@@ -207,6 +227,8 @@ public:
 
 	void setName(std::string newName);
 
+	void open(); // select this pattern
+
 	//functions for editing
 	void openTrack(int trackNumber);
 
@@ -214,18 +236,21 @@ public:
 
 	void newTrack();
 
-	void removeTrack(int patternNum);
+	void removeTrack(int trackNum);
 
-	void renameTrack(int patternNum, std::string newName);
+	void renameTrack(int trackNum, std::string newName);
+
 
 };
 
 //class patternImplement is used by Midi object to add patterns to the midi
 class PatternImpl {
-
+public:
 	Pattern * pattern;
 
 	MidiPosition startLocation;
+
+	void open(); // selects this pattern
 
 };
 
@@ -256,28 +281,32 @@ public:
 		void setName(std::string newName);	// set song name
 		std::string getName();				// get song name
 
-		void setCopyright(std::string str);				// set copyright info
+		void setCopyright(std::string str);	// set copyright info
 		std::string getCopyright();
 
-		void setDescription(std::string str);				// set song description
+		void setDescription(std::string str);	// set song description
 		std::string getDescription();
 
-		std::string getInfo(std::string style = "standard");				// gets info about song
+		std::string getInfo(std::string style = "standard");	// gets info about song
 
 		unsigned long int getNoteCount();
 
 		//functions for patterns
-		void newPattern();
+		void newPattern(); // add pattern to pattern list
 
-		void removePattern(int patternNum);
+		void removePattern(int patternNum); // remove pattern from pattern list
 
-		void renamePattern(int patternNum, std::string newName);
+		void renamePattern(int patternNum, std::string newName); // renames a pattern
 
-		void openPattern(int patternNum);
+		void openPattern(int patternNum); // selects a pattern as the current pattern for editing
 
 		void closePattern();
+
+		// functions for using patterns in midi
+		void includePattern(int patternNum, int trackNum, int tick); // include pattern in the midi
 
 	};
 
 extern Pattern * currentPattern;
 extern Track * currentTrack;
+
