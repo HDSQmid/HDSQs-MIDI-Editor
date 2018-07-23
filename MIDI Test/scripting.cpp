@@ -3,7 +3,7 @@
 
 void quickRunScript(std::string fileName)
 {
-	script temp(fileName);
+	// script temp(fileName);
 
-	temp.run();
+	// temp.run();
 }

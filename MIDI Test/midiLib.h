@@ -32,6 +32,8 @@
 /*Track*/
 #define MIDI_NOTE (-2001)
 
+class MidiPosition;
+
 // class patternSize for returning length 
 class patternSize {
 protected:
@@ -40,11 +42,11 @@ protected:
 public:
 	patternSize(int nlength, int nheight);
 
-	patternSize(MidiPosition startPos, MidiPosition endPos, int height);
+	patternSize(MidiPosition startPos, MidiPosition endPos, int nheight);
 
-	void setData(int length, int height);
+	void setData(int nlength, int nheight);
 
-	void setData(MidiPosition startPos, MidiPosition endPos, int height);
+	void setData(MidiPosition startPos, MidiPosition endPos, int nheight);
 
 	int getLength();
 
@@ -54,6 +56,11 @@ public:
 
 class MidiPosition {
 public:
+
+	MidiPosition();
+
+	MidiPosition(int tick);
+
 	unsigned int position; // position in ticks from start
 
 	void setPosition(unsigned int value);
@@ -73,19 +80,53 @@ public:
 //Events
 ///
 
-class MidiEvent { // most event types can be used directly from this
+class MidiEvent {
 protected:
-	
-	int value;	// velocity for note, etc
-				// 0 - 127 generally
 	int type;
 public:
 
 	MidiPosition tick;
 
-	MidiEvent(int type, int value);
 
-	MidiEvent();
+};
+
+class ShortValueMidiEvent : public MidiEvent { // most event types can be used directly from this
+protected:
+	
+	byte value;	// velocity for note, etc
+				// 0 - 127 generally
+public:
+
+
+	ShortValueMidiEvent(int type, byte value);
+
+	ShortValueMidiEvent();
+
+	virtual void setValue(byte val);
+
+	byte getRawValue();
+
+	virtual std::string getValueS(); //return as string
+
+	virtual byte getValue();
+
+	void increment(byte increment);
+
+	
+
+};
+
+class LongValueMidiEvent : public MidiEvent { // most event types can be used directly from this
+protected:
+
+	int value;	// velocity for note, etc
+				// 0 - 127 generally
+public:
+
+
+	LongValueMidiEvent(int type, int value);
+
+	LongValueMidiEvent();
 
 	virtual void setValue(int val);
 
@@ -97,13 +138,13 @@ public:
 
 	void increment(int increment);
 
-	
+
 
 };
 
-class MidiNote : public MidiEvent {
+class MidiNote : public ShortValueMidiEvent {
 protected:
-	int pitch;
+	byte pitch;
 	unsigned int gate;
 	//velocity included in class MidiEvent
 public:
@@ -117,15 +158,16 @@ public:
 
 };
 
-class MidiPitchBend : public MidiEvent {
-
+class MidiPitchBend : public LongValueMidiEvent {
+	int longValue;
+public:
 	//value included in class MidiEvent
 	//overload set value (value between -8191 and 8192)
 	void setValue(int val);
 
 };
 
-class MidiTempo : public MidiEvent {
+class MidiTempo : public LongValueMidiEvent {
 
 	//tempo value included in class MidiEvent
 	//add different return function (return based on time signature)
@@ -138,7 +180,7 @@ class MidiTempo : public MidiEvent {
 
 };
 
-class MidiKey : public MidiEvent {
+class MidiKey : public ShortValueMidiEvent {
 
 
 	//key value included in class MidiEvent
@@ -146,7 +188,7 @@ class MidiKey : public MidiEvent {
 
 };
 
-class MidiMark : public MidiEvent {
+class MidiMark : public ShortValueMidiEvent {
 
 	std::string value;
 	//add different return function (return as string)
@@ -245,10 +287,25 @@ public:
 
 //class patternImplement is used by Midi object to add patterns to the midi
 class PatternImpl {
-public:
-	Pattern * pattern;
+protected:
+
+	double magnification = 1; // magnification of track
+
+	int startTrim = 0; // length in ticks of trim of the pattern from the start in ticks
+	int endTrim = 0; // length in ticks of trim of the pattern from the end in ticks
 
 	MidiPosition startLocation;
+
+	int topTrackNum;
+
+public:
+
+
+	PatternImpl(Pattern *pat, int trackNum, MidiPosition tick);
+
+	Pattern * pattern;
+
+	
 
 	void open(); // selects this pattern
 
@@ -265,7 +322,7 @@ class Midi {
 
 		std::vector<TrackImpl> tracks;
 
-		std::vector<PatternImpl> PatternImpl; // the actual song
+		std::vector<PatternImpl> PatternImpls; // the actual song
 
 		std::vector<Pattern> Patterns; // store of patterns ready for use:tm:
 		
@@ -303,7 +360,8 @@ public:
 		void closePattern();
 
 		// functions for using patterns in midi
-		void includePattern(int patternNum, int trackNum, int tick); // include pattern in the midi
+		void implementPattern(int patternNum, int trackNum, int tick); // include pattern in the midi
+
 
 	};
 

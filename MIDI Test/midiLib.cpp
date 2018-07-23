@@ -4,7 +4,7 @@
 
 // midi events
 
-MidiEvent::MidiEvent(int type, int value)
+ShortValueMidiEvent::ShortValueMidiEvent(int type, byte value)
 {
 	this->type = type;
 
@@ -12,13 +12,13 @@ MidiEvent::MidiEvent(int type, int value)
 
 }
 
-MidiEvent::MidiEvent()
+ShortValueMidiEvent::ShortValueMidiEvent()
 {
 	type = 0;
 	value = 0;
 }
 
-void MidiEvent::setValue(int val)
+void ShortValueMidiEvent::setValue(byte val)
 {
 	if (val < 0) value = 0;
 	else {
@@ -27,24 +27,24 @@ void MidiEvent::setValue(int val)
 	}
 }
 
-int MidiEvent::getRawValue()
+byte ShortValueMidiEvent::getRawValue()
 {
 	return value;
 }
 
-std::string MidiEvent::getValueS()
+std::string ShortValueMidiEvent::getValueS()
 {
 	
 
 	return std::string((char*) value);
 }
 
-int MidiEvent::getValue()
+byte ShortValueMidiEvent::getValue()
 {
 	return getRawValue();
 }
 
-void MidiEvent::increment(int increment)
+void ShortValueMidiEvent::increment(byte increment)
 {
 	setValue(value + increment);
 }
@@ -80,6 +80,16 @@ void MidiNote::setGate(int val)
 	gate = val;
 }
 
+MidiPosition::MidiPosition()
+{
+	position = 0;
+}
+
+MidiPosition::MidiPosition(int tick)
+{
+	position = tick;
+}
+
 void MidiPosition::setPosition(unsigned int value)
 {
 	position = value;
@@ -109,10 +119,10 @@ void MidiPosition::increment(int numTicks)
 
 void MidiPitchBend::setValue(int val)
 {
-	if (val < -8191) value = -8191;
+	if (val < -8191) longValue = -8191;
 	else {
-		if (val > 8192) value = 8192;
-		else value = val;
+		if (val > 8192) longValue = 8192;
+		else longValue = val;
 	}
 }
 
@@ -217,6 +227,11 @@ void Midi::closePattern()
 	currentPattern = NULL;
 }
 
+void Midi::implementPattern(int patternNum, int trackNum, int tick)
+{
+	PatternImpls.push_back(PatternImpl(&(Patterns[patternNum]), trackNum, MidiPosition(tick)));
+}
+
 Pattern::Pattern()
 {
 	name = translate(DEFAULT_PATTERN_NAME);
@@ -230,6 +245,11 @@ Pattern::Pattern(std::string name)
 void Pattern::setName(std::string newName)
 {
 	name = newName;
+}
+
+void Pattern::open()
+{
+	currentPattern = this;
 }
 
 void Pattern::openTrack(int trackNumber)
@@ -273,6 +293,40 @@ patternSize::patternSize(int nlength, int nheight)
 
 patternSize::patternSize(MidiPosition startPos, MidiPosition endPos, int nheight)
 {
-	length = endPos - startPos; // use overloaded operator to calculate the length of the midi in ticks
+	length = 0;// endPos - startPos; // use overloaded operator to calculate the length of the midi in ticks
 	height = nheight;
+}
+
+void patternSize::setData(int nlength, int nheight)
+{
+	length = nlength;
+	height = nheight;
+}
+
+void patternSize::setData(MidiPosition startPos, MidiPosition endPos, int nheight)
+{
+	length = endPos.getRawPosition() - startPos.getRawPosition();
+	height = nheight;
+}
+
+int patternSize::getLength()
+{
+	return length;
+}
+
+int patternSize::getHeight()
+{
+	return height;
+}
+
+PatternImpl::PatternImpl(Pattern * pat, int trackNum, MidiPosition tick)
+{
+	pattern = pat;
+	topTrackNum = trackNum;
+	startLocation = tick;
+}
+
+void PatternImpl::open()
+{
+	pattern->open();
 }

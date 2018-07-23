@@ -9,6 +9,8 @@ midiFile* currentFile = NULL; // eventually make vector of open files
 
 midiFile::midiFile(std::string fileAddress)
 {
+	if (fileAddress == "") return;
+
 	location = fileAddress;
 
 	//open file here
@@ -85,8 +87,19 @@ void midiFile::makeEdit()
 void midiFile::saveFile()
 {
 	
+	// make file stram for saving
+	std::ofstream fileOut;
+	// open file in binary out mode
+	fileOut.open(location, std::ios::binary | std::ios::out);
 
-	//actually save the file here
+	if (fileOut.is_open()) {
+
+		//save file
+
+
+		fileOut.close();
+	}
+
 }
 
 void fileOpen(std::string location)

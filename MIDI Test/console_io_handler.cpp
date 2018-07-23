@@ -373,7 +373,7 @@ ConsoleSettingsAddLanguage::ConsoleSettingsAddLanguage()
 
 void ConsoleSettingsAddLanguage::call(std::string args)
 {
-	settings.addLanguage(args);
+	settings->addLanguage(args);
 }
 
 ConsolePrintTranslation::ConsolePrintTranslation()
@@ -398,4 +398,9 @@ ConsoleRunScript::ConsoleRunScript()
 	description = CONSOLE_INPUT_HANDLER_RUN_SCRIPT_DESCRIPTION;
 	arguments = CONSOLE_INPUT_HANDLER_RUN_SCRIPT_ARGUMENTS;
 	exampleUsage = CONSOLE_INPUT_HANDLER_RUN_SCRIPT_EXAMPLE_USAGE;
+}
+
+void ConsoleRunScript::call(std::string args) {
+
+
 }

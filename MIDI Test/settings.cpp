@@ -6,7 +6,7 @@
 void AppSettings::addLanguage(std::string fileLoc, bool echo)
 {
 	
-	languageFileAddresses.insert(languageFileAddresses.begin(), fileLoc);
+	languageFileAddresses.push_back(fileLoc);
 	refreshLanguages();
 	if (echo) sendMessage(MESSAGE_ADDED_LANGUAGE);
 
@@ -21,4 +21,41 @@ AppSettings::AppSettings()
 	addLanguage("en.lang", false);
 }
 
-AppSettings settings;
+int AppSettings::getStartUpOption()
+{
+	return startUpOption;
+}
+
+void AppSettings::setStartUpOption(int newVal)
+{
+	switch (newVal) {
+
+	case 0: // start empty
+		startUpOption = newVal;
+		break;
+	case 1: // start with new file
+		startUpOption = newVal;
+		break;
+	case 2: // start with most recent file
+		startUpOption = newVal;
+		break;
+	default:
+		break;
+
+	}
+
+	return;
+
+}
+
+std::string AppSettings::getLastFile()
+{
+	return lastFile;
+}
+
+void AppSettings::setLastFile(std::string str)
+{
+	lastFile = str;
+}
+
+AppSettings * settings;

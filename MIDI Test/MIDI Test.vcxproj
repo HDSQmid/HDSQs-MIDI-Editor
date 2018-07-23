@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="console_io_handler.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="files.h" />
     <ClInclude Include="languageDefinitions.h" />
     <ClInclude Include="messageSend.h" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="console_io_handler.cpp" />
+    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="files.cpp" />
     <ClCompile Include="messageSend.cpp" />
     <ClCompile Include="MIDI Editor.cpp" />

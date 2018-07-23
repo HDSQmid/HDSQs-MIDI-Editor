@@ -1,7 +1,6 @@
 #pragma once
 #include "midiLib.h"
 
-
 class midiFile {
 public:
 	midiFile(std::string fileAddress);
