@@ -58,4 +58,4 @@ void AppSettings::setLastFile(std::string str)
 	lastFile = str;
 }
 
-AppSettings * settings;
+AppSettings settings;

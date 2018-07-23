@@ -373,7 +373,7 @@ ConsoleSettingsAddLanguage::ConsoleSettingsAddLanguage()
 
 void ConsoleSettingsAddLanguage::call(std::string args)
 {
-	settings->addLanguage(args);
+	settings.addLanguage(args);
 }
 
 ConsolePrintTranslation::ConsolePrintTranslation()

@@ -84,10 +84,10 @@ int reverseTranslate(std::string translation)
 void refreshLanguages()
 {
 	langs.clear();
-	if (settings->languageFileAddresses.size()) {
+	if (settings.languageFileAddresses.size()) {
 		std::string fileAddress; // file address of current language being accessed
-		for (int i = 0; i < settings->languageFileAddresses.size(); i++) {
-			fileAddress = settings->languageFileAddresses[i];
+		for (int i = 0; i < settings.languageFileAddresses.size(); i++) {
+			fileAddress = settings.languageFileAddresses[i];
 			try{
 				langs.push_back(language(fileAddress));
 			}
