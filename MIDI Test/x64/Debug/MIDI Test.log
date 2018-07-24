@@ -1,14 +1,196 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MIDI Test.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  stdafx.cpp
-  console_io_handler.cpp
-  Debug.cpp
-  files.cpp
-  messageSend.cpp
   MIDI Editor.cpp
-  midiLib.cpp
-  multiLingual.cpp
-  pattern_input_handlers.cpp
-  scripting.cpp
-  settings.cpp
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(117): warning C4820: 'ShortValueMidiEvent': '7' bytes padding added after data member 'ShortValueMidiEvent::value'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(143): warning C4820: 'LongValueMidiEvent': '4' bytes padding added after data member 'LongValueMidiEvent::value'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(148): warning C4820: 'MidiNote': '3' bytes padding added after data member 'MidiNote::pitch'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(153): warning C4263: 'void MidiNote::setValue(int)': member function does not override any base class virtual member function
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(159): warning C4264: 'void ShortValueMidiEvent::setValue(byte)': no override available for virtual member function from base 'ShortValueMidiEvent'; function is hidden
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(105): note: see declaration of 'ShortValueMidiEvent::setValue'
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(93): note: see declaration of 'ShortValueMidiEvent'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(168): warning C4820: 'MidiPitchBend': '4' bytes padding added after data member 'MidiPitchBend::longValue'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(196): warning C4265: 'MidiMark': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(210): warning C4820: 'MidiTrack': '4' bytes padding added after data member 'MidiTrack::TrackChannel'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(248): warning C4820: 'Track': '4' bytes padding added after data member 'Track::TrackChannel'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(286): warning C4820: 'Pattern': '4' bytes padding added after data member 'Pattern::length'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(366): warning C4820: 'Midi': '4' bytes padding added after data member 'Midi::PPQN'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\files.h(27): warning C4820: 'midiFile': '7' bytes padding added after data member 'midiFile::hasChanged'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(29): warning C4820: 'ConsoleInputHandler': '4' bytes padding added after data member 'ConsoleInputHandler::exampleUsage'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(29): warning C4265: 'ConsoleInputHandler': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\pattern_input_handlers.h(18): warning C4265: 'ConsoleMidiPattern': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\pattern_input_handlers.h(28): warning C4265: 'ConsolePatternAdd': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\pattern_input_handlers.h(36): warning C4265: 'ConsolePatternRemove': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(45): warning C4265: 'ConsoleQuit': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(53): warning C4265: 'ConsoleHelp': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(61): warning C4265: 'ConsoleCrash': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(69): warning C4265: 'ConsoleInfo': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(78): warning C4265: 'ConsolePrintTranslation': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(87): warning C4265: 'ConsoleRunScript': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(97): warning C4265: 'ConsoleSettingsAddLanguage': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(107): warning C4265: 'ConsoleFileOpen': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(115): warning C4265: 'ConsoleFileNew': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(123): warning C4265: 'ConsoleFileClose': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(131): warning C4265: 'ConsoleFileSave': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(139): warning C4265: 'ConsoleFileSaveAs': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(150): warning C4265: 'ConsoleMidiMakeEdit': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(158): warning C4265: 'ConsoleMidiTrack': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(166): warning C4265: 'ConsoleMidiSelect': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\console_io_handler.h(174): warning C4265: 'ConsoleMidiSelection': class has virtual functions, but destructor is not virtual
+           instances of this class may not be destructed correctly
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\settings.h(9): warning C4820: 'AppSettings': '4' bytes padding added after data member 'AppSettings::startUpOption'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xtree(2420): warning C4625: 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>': copy constructor was implicitly defined as deleted
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Pr=std::less<int>,
+              _Alloc=std::allocator<std::pair<const int,std::string>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\map(82): note: see reference to class template instantiation 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Pr=std::less<int>,
+              _Alloc=std::allocator<std::pair<const int,std::string>>
+          ]
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\multilingual.h(7): note: see reference to class template instantiation 'std::map<int,std::string,std::less<int>,std::allocator<std::pair<const _Kty,_Ty>>>' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string
+          ]
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(29): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(62): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(161): warning C4820: 'std::basic_ostream<char,std::char_traits<char>>::sentry': '7' bytes padding added after data member 'std::basic_ostream<char,std::char_traits<char>>::sentry::_Ok'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(789): note: see reference to class template instantiation 'std::basic_ostream<char,std::char_traits<char>>::sentry' being compiled
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(24): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const char *)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(818): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(550): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(538): note: while compiling class template member function 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::put(_Elem)'
+          with
+          [
+              _Elem=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(994): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::put(_Elem)' being compiled
+          with
+          [
+              _Elem=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(679): note: see reference to class template instantiation 'std::basic_ostream<char,std::char_traits<char>>' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(181): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(176): note: while compiling class template member function 'void std::basic_ostream<char,std::char_traits<char>>::_Osfx(void)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(139): note: see reference to function template instantiation 'void std::basic_ostream<char,std::char_traits<char>>::_Osfx(void)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(129): warning C4820: 'std::basic_istream<char,std::char_traits<char>>::sentry': '7' bytes padding added after data member 'std::basic_istream<char,std::char_traits<char>>::sentry::_Ok'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\string(85): note: see reference to class template instantiation 'std::basic_istream<char,std::char_traits<char>>::sentry' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\string(164): note: see reference to function template instantiation 'std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &&,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,const _Elem)' being compiled
+          with
+          [
+              _Elem=char
+          ]
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(43): note: see reference to function template instantiation 'std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\string(117): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(154): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(132): note: while compiling class template member function 'bool std::basic_istream<char,std::char_traits<char>>::_Ipfx(bool)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(116): note: see reference to function template instantiation 'bool std::basic_istream<char,std::char_traits<char>>::_Ipfx(bool)' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(909): note: see reference to class template instantiation 'std::basic_istream<char,std::char_traits<char>>' being compiled
+  messageSend.cpp
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xtree(2420): warning C4625: 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>': copy constructor was implicitly defined as deleted
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Pr=std::less<int>,
+              _Alloc=std::allocator<std::pair<const int,std::string>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\map(82): note: see reference to class template instantiation 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Pr=std::less<int>,
+              _Alloc=std::allocator<std::pair<const int,std::string>>
+          ]
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\multilingual.h(7): note: see reference to class template instantiation 'std::map<int,std::string,std::less<int>,std::allocator<std::pair<const _Kty,_Ty>>>' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string
+          ]
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(10): warning C4242: 'initializing': conversion from 'int' to 'char', possible loss of data
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(65): warning C4242: 'argument': conversion from 'int' to 'WORD', possible loss of data
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(65): warning C4365: 'argument': conversion from 'int' to 'WORD', signed/unsigned mismatch
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(71): warning C4242: 'argument': conversion from 'int' to 'WORD', possible loss of data
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(71): warning C4365: 'argument': conversion from 'int' to 'WORD', signed/unsigned mismatch
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(94): warning C4242: 'argument': conversion from 'int' to 'WORD', possible loss of data
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(94): warning C4365: 'argument': conversion from 'int' to 'WORD', signed/unsigned mismatch
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(129): warning C4820: 'std::basic_istream<char,std::char_traits<char>>::sentry': '7' bytes padding added after data member 'std::basic_istream<char,std::char_traits<char>>::sentry::_Ok'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(682): note: see reference to class template instantiation 'std::basic_istream<char,std::char_traits<char>>::sentry' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(679): note: while compiling class template member function 'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::ignore(std::streamsize,int)'
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(87): note: see reference to function template instantiation 'std::basic_istream<char,std::char_traits<char>> &std::basic_istream<char,std::char_traits<char>>::ignore(std::streamsize,int)' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(909): note: see reference to class template instantiation 'std::basic_istream<char,std::char_traits<char>>' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(706): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(154): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(132): note: while compiling class template member function 'bool std::basic_istream<char,std::char_traits<char>>::_Ipfx(bool)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(116): note: see reference to function template instantiation 'bool std::basic_istream<char,std::char_traits<char>>::_Ipfx(bool)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(161): warning C4820: 'std::basic_ostream<char,std::char_traits<char>>::sentry': '7' bytes padding added after data member 'std::basic_ostream<char,std::char_traits<char>>::sentry::_Ok'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(581): note: see reference to class template instantiation 'std::basic_ostream<char,std::char_traits<char>>::sentry' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(578): note: while compiling class template member function 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::flush(void)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\istream(136): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::flush(void)' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(679): note: see reference to class template instantiation 'std::basic_ostream<char,std::char_traits<char>>' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(181): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(176): note: while compiling class template member function 'void std::basic_ostream<char,std::char_traits<char>>::_Osfx(void)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(139): note: see reference to function template instantiation 'void std::basic_ostream<char,std::char_traits<char>>::_Osfx(void)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(818): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(7): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const char *)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(550): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(538): note: while compiling class template member function 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::put(_Elem)'
+          with
+          [
+              _Elem=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(994): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::put(_Elem)' being compiled
+          with
+          [
+              _Elem=char
+          ]
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring_insert.h(58): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\string(174): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::_Insert_string<char,std::char_traits<char>,unsigned __int64>(std::basic_ostream<char,std::char_traits<char>> &,const _Elem *const ,const _SizeT)' being compiled
+          with
+          [
+              _Elem=char,
+              _SizeT=unsigned __int64
+          ]
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(72): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<char,std::char_traits<char>,std::allocator<char>>(std::basic_ostream<char,std::char_traits<char>> &,const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\string(117): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\string(164): note: see reference to function template instantiation 'std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &&,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,const _Elem)' being compiled
+          with
+          [
+              _Elem=char
+          ]
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(89): note: see reference to function template instantiation 'std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)' being compiled
   Generating Code...
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(83): warning C4702: unreachable code
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(86): warning C4702: unreachable code
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(99): warning C4702: unreachable code
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midi editor.cpp(102): warning C4702: unreachable code
   MIDI test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\HDSQs-MIDI-Editor\x64\Debug\MIDI Editor.exe

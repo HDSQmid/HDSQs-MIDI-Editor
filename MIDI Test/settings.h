@@ -24,4 +24,4 @@ public:
 
 };
 
-extern AppSettings settings;
+extern AppSettings * settings;

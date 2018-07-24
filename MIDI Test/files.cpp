@@ -7,7 +7,7 @@
 midiFile* currentFile = NULL; // eventually make vector of open files
 
 
-midiFile::midiFile(std::string fileAddress)
+midiFile::midiFile(std::string fileAddress) // open existing file
 {
 	if (fileAddress == "") return;
 
@@ -21,7 +21,7 @@ midiFile::midiFile(std::string fileAddress)
 
 }
 
-midiFile::midiFile()
+midiFile::midiFile() // new file
 {
 	hasChanged = false;
 	sendMessage(MESSAGE_NEW_FILE);

@@ -7,7 +7,8 @@ void AppSettings::addLanguage(std::string fileLoc, bool echo)
 {
 	
 	languageFileAddresses.push_back(fileLoc);
-	refreshLanguages();
+	refreshLanguages(); // this function accesses the settings object. 
+						// The settings object must be initialised first
 	if (echo) sendMessage(MESSAGE_ADDED_LANGUAGE);
 
 	// todo: if language adding fails, remove the language from the list
@@ -58,4 +59,4 @@ void AppSettings::setLastFile(std::string str)
 	lastFile = str;
 }
 
-AppSettings settings;
+AppSettings * settings;

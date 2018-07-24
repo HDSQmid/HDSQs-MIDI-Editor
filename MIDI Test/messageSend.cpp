@@ -84,6 +84,8 @@ std::string sendMessage(int message, std::string args, int title, int response)
 		ret = chooseYN();
 		break;
 	case MESSAGE_RESPONSE_STRING:
+		std::cin.ignore(INT_MAX, '\n');
+		std::cin.clear();
 		std::getline(std::cin, ret);
 		break;
 		
