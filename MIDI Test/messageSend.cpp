@@ -57,7 +57,7 @@ std::string sendMessage(int message, std::string args, int title, int response)
 			titleS = translate(MESSAGE_TYPE_QUESTION);
 			break;
 	case MESSAGE_TYPE_CRITICAL_ERROR:
-		colour = 4; // orange
+		colour = 4; // red
 		titleS = translate(MESSAGE_TYPE_CRITICAL_ERROR);
 		break;
 	default: 
