@@ -73,6 +73,8 @@ public:
 
 	void increment(int numTicks); // increase or decrese position by ticks
 
+
+
 };
 // todo: add operators for this event
 
