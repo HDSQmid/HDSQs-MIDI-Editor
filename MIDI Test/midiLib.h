@@ -334,6 +334,8 @@ class Midi {
 public:
 
 		Midi();
+		void save();
+		void load();
 
 
 		//functions for getting/setting midi details
