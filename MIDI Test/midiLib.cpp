@@ -143,6 +143,38 @@ Midi::Midi()
 	description = translate(STRING_MIDI_MADE_IN) + " " APP_NAME;
 }
 
+void Midi::save(std::ofstream * out)
+{
+	
+	//add the name of the file
+	{
+		size_t size = name.size();
+		out->write(reinterpret_cast<char*>(&size), sizeof(size_t));
+		out->write(name.c_str(), size);
+	}
+
+	//add the copyright info of the file
+	{
+		size_t size = copyright.size();
+		out->write(reinterpret_cast<char*>(&size), sizeof(size_t));
+		out->write(copyright.c_str(), size);
+	}
+
+	//add the description of the file
+	{
+		size_t size = description.size();
+		out->write(reinterpret_cast<char*>(&size), sizeof(size_t));
+		out->write(description.c_str(), size);
+	}
+
+	// for each pattern, call function to get array of bytes for pattern
+	// including unique int id for pattern to be used later?
+
+	// for each pattern impl, call function to get array of bytes
+	// including unique int id of pattern used
+
+}
+
 void Midi::setName(std::string newName)
 {
 	name = newName;

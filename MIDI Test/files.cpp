@@ -94,10 +94,15 @@ void midiFile::saveFile()
 
 	if (fileOut.is_open()) {
 
-		//save file
-
+		//save file]
+		midi.save(&fileOut);
 
 		fileOut.close();
+	}
+	else {
+
+		// send an error about not being able to save the file
+
 	}
 
 }

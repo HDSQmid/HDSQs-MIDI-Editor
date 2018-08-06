@@ -318,6 +318,11 @@ public:
 //
 class Midi {
 
+
+		std::string name, copyright, description;
+
+		int PPQN = 960;
+
 		SystemTrack systemEvents; // system track contains all system-wide events eg tempo
 
 		EventTrack channelEvents[16];
@@ -328,15 +333,13 @@ class Midi {
 
 		std::vector<Pattern> Patterns; // store of patterns ready for use:tm:
 		
-		std::string name, copyright, description;
-		int PPQN = 960;
 
 public:
 
 		Midi();
-		void save();
-		void load();
-
+		
+		void save(std::ofstream * out); // serialise midi file and return as a vector of bytes
+		
 
 		//functions for getting/setting midi details
 		void setName(std::string newName);	// set song name
