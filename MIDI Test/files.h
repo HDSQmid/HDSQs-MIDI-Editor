@@ -17,10 +17,16 @@ public:
 
 	void makeEdit();
 
+	bool is_good();
+
+	bool has_changed();
+
 protected:
 	std::string location = "";
 
 	bool hasChanged;
+
+	bool isGood = true;
 
 	void saveFile();
 

@@ -13,11 +13,41 @@ midiFile::midiFile(std::string fileAddress) // open existing file
 
 	location = fileAddress;
 
-	//open file here
+	try {
 
-	hasChanged = false;
+		//open file here
+		std::ifstream in;
+		in.open(fileAddress, std::ios::binary | std::ios::in);
+
+		if (in.is_open()) {
+
+			// send file stream as reference to new MIDI object
+			midi = Midi(&in);
+
+			in.close();
+
+		}
+		else throw std::exception("Error opening file");
+
+		hasChanged = false;
+
+		sendMessage(MESSAGE_OPEN_FILE, fileAddress);
+
+	}
+	catch (std::exception &e) {
+
+		isGood = false;
+		sendMessage(MESSAGE_ERROR_OPENING_FILE, e.what(),MESSAGE_TYPE_CRITICAL_ERROR);
+
+	}
+	catch (...) {
+
+		isGood = false;
+		sendMessage(MESSAGE_ERROR_OPENING_FILE, "", MESSAGE_TYPE_CRITICAL_ERROR);
+
+	}
+
 	
-	sendMessage(MESSAGE_OPEN_FILE, fileAddress);
 
 }
 
@@ -48,11 +78,22 @@ void midiFile::save()
 			location = sendMessage(STRING_ENTER_SAVE_LOCATION, "",MESSAGE_TYPE_QUESTION, MESSAGE_RESPONSE_STRING);
 			//check filename is valid
 		}
+		try {
+			saveFile();
 
-		saveFile();
+			sendMessage(MESSAGE_FILE_SAVED, location);
+			hasChanged = false;
+		}
+		catch (std::exception &e) {
 
-		sendMessage(MESSAGE_FILE_SAVED, location);
-		hasChanged = false;
+			sendMessage(MESSAGE_ERROR_SAVING_FILE, e.what(), MESSAGE_TYPE_CRITICAL_ERROR);
+
+		}
+		catch (...) {
+
+			sendMessage(MESSAGE_ERROR_SAVING_FILE, "", MESSAGE_TYPE_CRITICAL_ERROR);
+
+		}
 	}
 	else {
 
@@ -83,6 +124,16 @@ void midiFile::makeEdit()
 	else sendMessage(MESSAGE_NO_FILE_OPEN, "",MESSAGE_TYPE_ERROR, MESSAGE_RESPONSE_OK);
 }
 
+bool midiFile::is_good()
+{
+	return (isGood && midi.is_good());
+}
+
+bool midiFile::has_changed()
+{
+	return (hasChanged && midi.has_changed());
+}
+
 //the one that actually saves the file
 void midiFile::saveFile()
 {
@@ -94,7 +145,7 @@ void midiFile::saveFile()
 
 	if (fileOut.is_open()) {
 
-		//save file]
+		//save file
 		midi.save(&fileOut);
 
 		fileOut.close();
@@ -117,6 +168,10 @@ void fileOpen(std::string location)
 	}
 
 	currentFile = new midiFile(location);
+	if (!currentFile->is_good()) {
+		delete currentFile;
+		currentFile = NULL;
+	}
 
 }
 

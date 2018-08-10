@@ -3,3 +3,5 @@
 #include "midiLib.h"
 
 void printVariableSizes();
+
+void printStdVarSizes();

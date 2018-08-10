@@ -42,6 +42,9 @@
 #define MESSAGE_EDIT_MADE (1108) // made edit
 #define MESSAGE_ADDED_LANGUAGE (1109) // added language to list of languages
 
+#define MESSAGE_ERROR_OPENING_FILE (1201) // An error occurred when opening the file. Maybe it's Corrupted?
+#define MESSAGE_ERROR_SAVING_FILE (1202) // An error occurred when saving the file.
+
 //miscellaneous strings
 #define MESSAGE_NO_TRANSLATION_FOUND (2000)
 #define STRING_GREETING_HELP (2001)

@@ -37,7 +37,7 @@ class MidiPosition;
 // class patternSize for returning length 
 class patternSize {
 protected:
-	int length, height;
+	unsigned int length, height;
 
 public:
 	patternSize(int nlength, int nheight);
@@ -57,14 +57,13 @@ public:
 class MidiPosition {
 public:
 
-	MidiPosition();
-
-	MidiPosition(int tick);
-
 	unsigned int position; // position in ticks from start
 
-	void setPosition(unsigned int value);
 
+	MidiPosition();
+	MidiPosition(int tick);
+
+	void setPosition(unsigned int value);
 	void setPosition(unsigned int barNum, unsigned int tickNum);
 
 	int getRawPosition();
@@ -97,6 +96,7 @@ protected:
 	
 	byte value;	// velocity for note, etc
 				// 0 - 127 generally
+
 public:
 
 
@@ -144,9 +144,11 @@ public:
 
 };
 
-class MidiNote : public ShortValueMidiEvent {
+class MidiNote {
 protected:
 	byte pitch;
+	byte velocity;
+	byte release;
 	unsigned int gate;
 	//velocity included in class MidiEvent
 public:
@@ -236,14 +238,15 @@ public:
 class Track : public MidiTrack {
 public:
 	//events in vector (sorted in order of position)
-
-	//addNote(MidiNote event);
+	std::vector<MidiNote> notes;
 
 	std::string trackName;
 
-	int TrackChannel;
-
 public:
+
+
+	void addNote(MidiNote event);
+	void addNote(int start, int pitch, int duration, int velocity, int release);
 
 	void setName(std::string newName);
 
@@ -251,7 +254,8 @@ public:
 
 class TrackImpl {
 
-	int channelNum;
+	std::string name;
+	byte channelNum;
 
 };
 
@@ -260,9 +264,12 @@ class Pattern {
 
 	std::string name;
 
+	int length = 0; // length of midi pattern in ticks
+
 	std::vector<Track> tracks;
 
-	int length = 0; // length of midi pattern in ticks
+	long long int patternNumber; // only use when saving MIDI
+	
 
 public:
 	Pattern();
@@ -293,12 +300,12 @@ protected:
 
 	double magnification = 1; // magnification of track
 
-	int startTrim = 0; // length in ticks of trim of the pattern from the start in ticks
-	int endTrim = 0; // length in ticks of trim of the pattern from the end in ticks
+	unsigned int startTrim = 0; // length in ticks of trim of the pattern from the start in ticks
+	unsigned int endTrim = 0; // length in ticks of trim of the pattern from the end in ticks
 
 	MidiPosition startLocation;
 
-	int topTrackNum;
+	unsigned int topTrackNum;
 
 public:
 
@@ -318,59 +325,64 @@ public:
 //
 class Midi {
 
+	bool isGood = true;
+	bool hasChanged = false;
 
-		std::string name, copyright, description;
+	std::string name, copyright, description;
 
-		int PPQN = 960;
+	int ppqn = 960;
 
-		SystemTrack systemEvents; // system track contains all system-wide events eg tempo
+	SystemTrack systemEvents; // system track contains all system-wide events eg tempo
 
-		EventTrack channelEvents[16];
+	EventTrack channelEvents[16];
 
-		std::vector<TrackImpl> tracks;
+	std::vector<TrackImpl> tracks;
 
-		std::vector<PatternImpl> PatternImpls; // the actual song
+	std::vector<PatternImpl> PatternImpls; // the actual song
 
-		std::vector<Pattern> Patterns; // store of patterns ready for use:tm:
+	std::vector<Pattern> Patterns; // store of patterns ready for use:tm:
 		
 
 public:
 
-		Midi();
+	Midi();
+	Midi(std::ifstream * in);
 		
-		void save(std::ofstream * out); // serialise midi file and return as a vector of bytes
+	void save(std::ofstream * out); // serialise midi file and return as a vector of bytes
 		
+	bool is_good();
+	bool has_changed();
 
-		//functions for getting/setting midi details
-		void setName(std::string newName);	// set song name
-		std::string getName();				// get song name
+	//functions for getting/setting midi details
+	void setName(std::string newName);	// set song name
+	std::string getName();				// get song name
 
-		void setCopyright(std::string str);	// set copyright info
-		std::string getCopyright();
+	void setCopyright(std::string str);	// set copyright info
+	std::string getCopyright();
 
-		void setDescription(std::string str);	// set song description
-		std::string getDescription();
+	void setDescription(std::string str);	// set song description
+	std::string getDescription();
 
-		std::string getInfo(std::string style = "standard");	// gets info about song
+	std::string getInfo(std::string style = "standard");	// gets info about song
 
-		unsigned long int getNoteCount();
+	unsigned long int getNoteCount();
 
-		//functions for patterns
-		void newPattern(); // add pattern to pattern list
+	//functions for patterns
+	void newPattern(); // add pattern to pattern list
 
-		void removePattern(int patternNum); // remove pattern from pattern list
+	void removePattern(int patternNum); // remove pattern from pattern list
 
-		void renamePattern(int patternNum, std::string newName); // renames a pattern
+	void renamePattern(int patternNum, std::string newName); // renames a pattern
 
-		void openPattern(int patternNum); // selects a pattern as the current pattern for editing
+	void openPattern(int patternNum); // selects a pattern as the current pattern for editing
 
-		void closePattern();
+	void closePattern();
 
-		// functions for using patterns in midi
-		void implementPattern(int patternNum, int trackNum, int tick); // include pattern in the midi
+	// functions for using patterns in midi
+	void implementPattern(int patternNum, int trackNum, int tick); // include pattern in the midi
 
 
-	};
+};
 
 extern Pattern * currentPattern;
 extern Track * currentTrack;

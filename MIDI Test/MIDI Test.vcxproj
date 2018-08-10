@@ -183,6 +183,7 @@
   <ItemGroup>
     <None Include="Lang\en.lang" />
     <None Include="Lang\pigLatin.lang" />
+    <None Include="test.hqp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MIDI Editor.rc" />
@@ -190,6 +191,7 @@
   <ItemGroup>
     <Text Include="Guide to contributing.txt" />
     <Text Include="Guide to scripting.txt" />
+    <Text Include="HQP format.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

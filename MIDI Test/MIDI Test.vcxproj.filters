@@ -97,6 +97,9 @@
     <None Include="Lang\pigLatin.lang">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="test.hqp">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MIDI Editor.rc">
@@ -108,6 +111,9 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Guide to contributing.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="HQP format.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

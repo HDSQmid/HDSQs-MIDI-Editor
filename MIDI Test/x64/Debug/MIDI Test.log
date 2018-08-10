@@ -1,120 +1,32 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (MIDI Test.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  midiLib.cpp
+  files.cpp
 c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(119): warning C4820: 'ShortValueMidiEvent': '7' bytes padding added after data member 'ShortValueMidiEvent::value'
 c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(145): warning C4820: 'LongValueMidiEvent': '4' bytes padding added after data member 'LongValueMidiEvent::value'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(150): warning C4820: 'MidiNote': '3' bytes padding added after data member 'MidiNote::pitch'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(155): warning C4263: 'void MidiNote::setValue(int)': member function does not override any base class virtual member function
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(161): warning C4264: 'void ShortValueMidiEvent::setValue(byte)': no override available for virtual member function from base 'ShortValueMidiEvent'; function is hidden
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(107): note: see declaration of 'ShortValueMidiEvent::setValue'
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(95): note: see declaration of 'ShortValueMidiEvent'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(170): warning C4820: 'MidiPitchBend': '4' bytes padding added after data member 'MidiPitchBend::longValue'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(198): warning C4265: 'MidiMark': class has virtual functions, but destructor is not virtual
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(152): warning C4820: 'MidiNote': '1' bytes padding added after data member 'MidiNote::release'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(172): warning C4820: 'MidiPitchBend': '4' bytes padding added after data member 'MidiPitchBend::longValue'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(200): warning C4265: 'MidiMark': class has virtual functions, but destructor is not virtual
            instances of this class may not be destructed correctly
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(212): warning C4820: 'MidiTrack': '4' bytes padding added after data member 'MidiTrack::TrackChannel'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(250): warning C4820: 'Track': '4' bytes padding added after data member 'Track::TrackChannel'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(288): warning C4820: 'Pattern': '4' bytes padding added after data member 'Pattern::length'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(372): warning C4820: 'Midi': '4' bytes padding added after data member 'Midi::PPQN'
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xtree(2420): warning C4625: 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>': copy constructor was implicitly defined as deleted
-          with
-          [
-              _Kty=int,
-              _Ty=std::string,
-              _Pr=std::less<int>,
-              _Alloc=std::allocator<std::pair<const int,std::string>>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\map(82): note: see reference to class template instantiation 'std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>' being compiled
-          with
-          [
-              _Kty=int,
-              _Ty=std::string,
-              _Pr=std::less<int>,
-              _Alloc=std::allocator<std::pair<const int,std::string>>
-          ]
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\multilingual.h(7): note: see reference to class template instantiation 'std::map<int,std::string,std::less<int>,std::allocator<std::pair<const _Kty,_Ty>>>' being compiled
-          with
-          [
-              _Kty=int,
-              _Ty=std::string
-          ]
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(49): warning C4365: 'argument': conversion from 'int' to 'byte', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(64): warning C4242: '=': conversion from 'int' to 'byte', possible loss of data
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(64): warning C4365: '=': conversion from 'int' to 'byte', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(73): warning C4242: '=': conversion from 'int' to 'byte', possible loss of data
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(73): warning C4365: '=': conversion from 'int' to 'byte', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(80): warning C4365: '=': conversion from 'int' to 'unsigned int', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(90): warning C4365: '=': conversion from 'int' to 'unsigned int', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(98): warning C4100: 'tickNum': unreferenced formal parameter
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(98): warning C4100: 'barNum': unreferenced formal parameter
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(105): warning C4365: 'return': conversion from 'unsigned int' to 'int', signed/unsigned mismatch
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(214): warning C4820: 'MidiTrack': '4' bytes padding added after data member 'MidiTrack::TrackChannel'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(260): warning C4820: 'TrackImpl': '7' bytes padding added after data member 'TrackImpl::channelNum'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(269): warning C4820: 'Pattern': '4' bytes padding added after data member 'Pattern::length'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(331): warning C4820: 'Midi': '6' bytes padding added after data member 'Midi::hasChanged'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(335): warning C4820: 'Midi': '4' bytes padding added after data member 'Midi::ppqn'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\files.h(33): warning C4820: 'midiFile': '6' bytes padding added after data member 'midiFile::isGood'
 c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(742): warning C4820: 'std::basic_filebuf<char,std::char_traits<char>>': '2' bytes padding added after data member 'std::basic_filebuf<char,std::char_traits<char>>::_Wrotesome'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(1235): note: see reference to class template instantiation 'std::basic_filebuf<char,std::char_traits<char>>' being compiled
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(152): note: see reference to class template instantiation 'std::basic_ofstream<char,std::char_traits<char>>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(999): note: see reference to class template instantiation 'std::basic_filebuf<char,std::char_traits<char>>' being compiled
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\files.cpp(19): note: see reference to class template instantiation 'std::basic_ifstream<char,std::char_traits<char>>' being compiled
 c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(744): warning C4820: 'std::basic_filebuf<char,std::char_traits<char>>': '3' bytes padding added after data member 'std::basic_filebuf<char,std::char_traits<char>>::_Closef'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(1000): warning C4820: 'std::basic_ifstream<char,std::char_traits<char>>': '4' bytes padding added after data member 'std::basic_ifstream<char,std::char_traits<char>>::_Filebuffer'
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\files.cpp(43): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\files.cpp(92): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
 c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(1236): warning C4820: 'std::basic_ofstream<char,std::char_traits<char>>': '4' bytes padding added after data member 'std::basic_ofstream<char,std::char_traits<char>>::_Filebuffer'
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(153): warning C4365: 'argument': conversion from 'size_t' to 'std::streamsize', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(160): warning C4365: 'argument': conversion from 'size_t' to 'std::streamsize', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(167): warning C4365: 'argument': conversion from 'size_t' to 'std::streamsize', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(249): warning C4365: 'argument': conversion from 'int' to 'const unsigned __int64', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(254): warning C4365: 'argument': conversion from 'int' to 'const unsigned __int64', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(264): warning C4365: 'argument': conversion from 'int' to 'const unsigned __int64', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(289): warning C4365: 'argument': conversion from 'int' to 'const unsigned __int64', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(309): warning C4365: 'argument': conversion from 'int' to 'const unsigned __int64', signed/unsigned mismatch
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(326): warning C4100: 'endPos': unreferenced formal parameter
-c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(326): warning C4100: 'startPos': unreferenced formal parameter
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\files.cpp(142): note: see reference to class template instantiation 'std::basic_ofstream<char,std::char_traits<char>>' being compiled
 c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(449): warning C4365: 'initializing': conversion from '__int64' to 'size_t', signed/unsigned mismatch
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(411): note: while compiling class template member function 'int std::basic_filebuf<char,std::char_traits<char>>::overflow(int)'
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(644): note: see reference to function template instantiation 'int std::basic_filebuf<char,std::char_traits<char>>::overflow(int)' being compiled
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(1235): note: see reference to class template instantiation 'std::basic_filebuf<char,std::char_traits<char>>' being compiled
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(152): note: see reference to class template instantiation 'std::basic_ofstream<char,std::char_traits<char>>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(161): warning C4820: 'std::basic_ostream<char,std::char_traits<char>>::sentry': '7' bytes padding added after data member 'std::basic_ostream<char,std::char_traits<char>>::sentry::_Ok'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(561): note: see reference to class template instantiation 'std::basic_ostream<char,std::char_traits<char>>::sentry' being compiled
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(559): note: while compiling class template member function 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::write(const _Elem *,std::streamsize)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(152): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::write(const _Elem *,std::streamsize)' being compiled
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(679): note: see reference to class template instantiation 'std::basic_ostream<char,std::char_traits<char>>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(570): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(999): note: see reference to class template instantiation 'std::basic_filebuf<char,std::char_traits<char>>' being compiled
+  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\files.cpp(19): note: see reference to class template instantiation 'std::basic_ifstream<char,std::char_traits<char>>' being compiled
 c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(706): warning C4365: 'initializing': conversion from '__int64' to 'size_t', signed/unsigned mismatch
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(685): note: while compiling class template member function 'bool std::basic_filebuf<char,std::char_traits<char>>::_Endwrite(void)'
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\fstream(616): note: see reference to function template instantiation 'bool std::basic_filebuf<char,std::char_traits<char>>::_Endwrite(void)' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(181): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(176): note: while compiling class template member function 'void std::basic_ostream<char,std::char_traits<char>>::_Osfx(void)'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\ostream(139): note: see reference to function template instantiation 'void std::basic_ostream<char,std::char_traits<char>>::_Osfx(void)' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(1023): warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(965): note: see reference to function template instantiation 'Pattern *std::vector<Pattern,std::allocator<_Ty>>::_Emplace_reallocate<_Ty>(Pattern *const ,_Ty &&)' being compiled
-          with
-          [
-              _Ty=Pattern
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(971): note: see reference to function template instantiation 'Pattern *std::vector<Pattern,std::allocator<_Ty>>::_Emplace_reallocate<_Ty>(Pattern *const ,_Ty &&)' being compiled
-          with
-          [
-              _Ty=Pattern
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(986): note: see reference to function template instantiation 'void std::vector<Pattern,std::allocator<_Ty>>::emplace_back<Pattern>(Pattern &&)' being compiled
-          with
-          [
-              _Ty=Pattern
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(985): note: while compiling class template member function 'void std::vector<Pattern,std::allocator<_Ty>>::push_back(_Ty &&)'
-          with
-          [
-              _Ty=Pattern
-          ]
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.cpp(239): note: see reference to function template instantiation 'void std::vector<Pattern,std::allocator<_Ty>>::push_back(_Ty &&)' being compiled
-          with
-          [
-              _Ty=Pattern
-          ]
-  c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\midilib.h(332): note: see reference to class template instantiation 'std::vector<Pattern,std::allocator<_Ty>>' being compiled
-          with
-          [
-              _Ty=Pattern
-          ]
   MIDI test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\HDSQs-MIDI-Editor\x64\Debug\MIDI Editor.exe

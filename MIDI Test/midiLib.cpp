@@ -58,19 +58,19 @@ MidiNote::MidiNote(int pitch, int value, int gate)
 
 void MidiNote::setValue(int val)
 {
-	if (val < 1) value = 1;
+	if (val < 1) velocity = 1;
 	else {
-		if (val > 127) value = 127;
-		else value = val;
+		if (val > 127) velocity = 127;
+		else velocity = val;
 	}
 }
 
 void MidiNote::setPitch(int val)
 {
-	if (val < 0) value = 0;
+	if (val < 0) pitch = 0;
 	else {
-		if (val > 127) value = 127;
-		else value = val;
+		if (val > 127) pitch = 127;
+		else pitch = val;
 	}
 }
 
@@ -143,29 +143,74 @@ Midi::Midi()
 	description = translate(STRING_MIDI_MADE_IN) + " " APP_NAME;
 }
 
+Midi::Midi(std::ifstream * in)
+{
+	// read name of midi
+	{
+		size_t size;
+		in->read(reinterpret_cast<char*>(&size), sizeof size_t);
+		
+		char * str = new char[size];
+		in->read(str, size);
+		
+		name = std::string(str);
+
+	}
+
+	// read copyright of midi
+	{
+		size_t size;
+		in->read(reinterpret_cast<char*>(&size), sizeof size_t);
+
+		char * str = new char[size];
+		in->read(str, size);
+
+		copyright = std::string(str);
+
+	}
+
+	// read description of midi
+	{
+		size_t size;
+		in->read(reinterpret_cast<char*>(&size), sizeof size_t);
+
+		char * str = new char[size];
+		in->read(str, size);
+
+		description = std::string(str);
+
+	}
+
+	in->read(reinterpret_cast<char*>(&ppqn), sizeof (int));
+
+}
+
 void Midi::save(std::ofstream * out)
 {
 	
-	//add the name of the file
+	//write name of midi
 	{
 		size_t size = name.size();
 		out->write(reinterpret_cast<char*>(&size), sizeof(size_t));
 		out->write(name.c_str(), size);
 	}
 
-	//add the copyright info of the file
+	//write copyright info of midi
 	{
 		size_t size = copyright.size();
 		out->write(reinterpret_cast<char*>(&size), sizeof(size_t));
 		out->write(copyright.c_str(), size);
 	}
 
-	//add the description of the file
+	// write description of midi
 	{
 		size_t size = description.size();
 		out->write(reinterpret_cast<char*>(&size), sizeof(size_t));
 		out->write(description.c_str(), size);
 	}
+
+	// write ppqn
+	out->write(reinterpret_cast<char*>(&ppqn), sizeof(int));
 
 	// for each pattern, call function to get array of bytes for pattern
 	// including unique int id for pattern to be used later?
@@ -173,6 +218,16 @@ void Midi::save(std::ofstream * out)
 	// for each pattern impl, call function to get array of bytes
 	// including unique int id of pattern used
 
+}
+
+bool Midi::is_good()
+{
+	return isGood;
+}
+
+bool Midi::has_changed()
+{
+	return hasChanged;
 }
 
 void Midi::setName(std::string newName)
