@@ -31,7 +31,7 @@ English
 1108 Edit Made
 1109 Added Language
 
-1201 An error occured while opening the file. Was it corrupted?
+1201 An error occured while trying to open the file. Was it corrupted?
 1202 An error occured while saving the file.
 
 
@@ -41,8 +41,8 @@ English
 2003 The file was unchanged. Didn't save.
 2004 Arguments
 2005 Example Usage
-2006 An critical error has occurred, which has caused the application to crash.
-2007 The application will attempt to save your project.
+2006 Oopsie woopsie. We ran into a problem that was probably your fault and now the program will proceed to crash.
+2007 we'll attempt to save your project, but no promises.
 2008 Midi created with
 2009 Application built on
 2010 at
