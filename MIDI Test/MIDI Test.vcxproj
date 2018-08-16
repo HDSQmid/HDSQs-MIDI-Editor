@@ -191,7 +191,7 @@
   <ItemGroup>
     <Text Include="Guide to contributing.txt" />
     <Text Include="Guide to scripting.txt" />
-    <Text Include="HQP format.txt" />
+    <Text Include="HQM format.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

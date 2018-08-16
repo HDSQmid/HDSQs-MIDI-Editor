@@ -291,7 +291,7 @@ ConsoleCrash::ConsoleCrash()
 
 void ConsoleCrash::call(std::string args)
 {
-	throw std::exception("Manually initiated crash");
+	throw std::exception("Manually initiated crash", ERROR_CODE_MANUAL_CRASH);
 }
 
 ConsoleInfo::ConsoleInfo()

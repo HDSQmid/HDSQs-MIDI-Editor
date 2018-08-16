@@ -1,0 +1,126 @@
+English
+
+0 Null
+
+1 Message
+2 Error
+3 Help
+4 Tip
+5 Question
+6 Unknown message type
+7 Critical error
+
+101 Ok
+102 Yes/No
+103 Retry/Cancel
+104 Enter value
+105 Unknown response type
+
+
+1000 No commands matched your arguments.
+1001 Please provide a command.
+
+1100 Opened file.
+1101 Created new file.
+1102 Closed file.
+1103 There is no file open. Open a file and try again.
+1104 Not a valid file name
+1105 Would you like to save your changes?
+1106 Saved
+1107 Saved as
+1108 Edit Made
+1109 Added Language
+
+1201 An error occured while trying to open the file. Was it corrupted?
+1202 An error occured while saving the file.
+
+
+2000 Error: translation not found
+2001 Type "help" for help
+2002 Enter a location to save file
+2003 The file was unchanged. Didn't save.
+2004 Arguments
+2005 Example Usage
+2006 Oopsie woopsie. We ran into a problem that was probably your fault and now the program will proceed to crash.
+2007 we'll attempt to save your project, but no promises.
+2008 Midi created with
+2009 Application built on
+2010 at
+2011 Version
+2012 Translation
+2013 Help for
+2014 Error Code
+
+3001 New Midi
+3002 New pattern
+3003 New track
+3010 Copyright (c)
+
+
+100012 Does nothing
+100013 N/A
+100014 N/A
+
+100022 Opens a file
+100023 fileName
+100024 example.mid
+
+100032 Closes the open file
+100033 (none)
+100034 
+
+100042 Saves the open file
+100043 (fileName)
+100044 
+
+100052 Saves the open file under a new file name
+100053 fileName
+100054 example2.mid
+
+100062 Quits the application
+100063 (none)
+100064 
+
+100072 Gives help on console commands
+100073 (commandName)
+100074 open
+
+100082 Crashes the application
+100083 (none)
+100084 
+
+100092 Prints application info
+100093 (none)
+100094 
+
+100102 Creates a new file
+100103 (none)
+100104 
+
+100112 Makes a mock edit to the open file
+100113 (none)
+100114 
+
+100122 Performs actions on patterns
+100123 Not implemented yet
+100124 (maybe) pattern add, pattern remove Pattern 1, etc
+
+100132 Performs actions on tracks
+100133 Not implemented yet
+100134 (maybe) track add, track remove Track 1, etc
+
+100142 Selects things
+100143 selectionCriteria(s)
+100144 (maybe) select notes velocity < 15
+
+100152 Performs actions on the current selection
+100153 action
+100154 (probably) selection delete
+
+100162 Adds a language
+100163 fileName
+100164 en.lang
+
+100172 Prints the translation of an integer message code
+100173 messageCode
+100174 printTranslation 0

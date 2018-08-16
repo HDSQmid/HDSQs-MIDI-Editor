@@ -46,9 +46,6 @@ midiFile::midiFile(std::string fileAddress) // open existing file
 		sendMessage(MESSAGE_ERROR_OPENING_FILE, "", MESSAGE_TYPE_CRITICAL_ERROR);
 
 	}
-
-	
-
 }
 
 midiFile::midiFile() // new file
@@ -172,14 +169,15 @@ void fileOpen(std::string location)
 		delete currentFile;
 		currentFile = NULL;
 	}
-
+	updateWindowTitle();
 }
 
 void fileClose()
-{
-	
+{	
 	delete currentFile;
 	currentFile = NULL;
+
+	updateWindowTitle();
 }
 
 void fileNew()
@@ -192,7 +190,7 @@ void fileNew()
 	}
 
 	currentFile = new midiFile();
-
+	updateWindowTitle();
 }
 
 bool fileIsOpen() {

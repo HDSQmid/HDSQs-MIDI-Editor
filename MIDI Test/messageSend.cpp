@@ -1,13 +1,16 @@
 #include "stdafx.h"
 #include "messageSend.h"
 #include "multiLingual.h"
+#include "files.h"
+
+bool echo = true;
 
 std::string chooseYN() {
 
 	std::cout << "type (y)es or (n)o" << std::endl;
 	while (true) {
 
-		char ch = getchar();
+		char ch = getwchar();
 
 		
 
@@ -26,6 +29,8 @@ std::string chooseYN() {
 std::string sendMessage(int message, std::string args, int title, int response)
 {
 #ifdef CONSOLE
+
+	if (!echo) return std::string("Echo is off");
 
 	// print message
 
@@ -104,6 +109,25 @@ std::string sendMessage(int message, std::string args, int title, int response)
 
 }
 
+void printLogo()
+{
+
+	std::cout <<
+		" 1         1   1111111111    11111111111   11111111111 \n" <<
+		"101       101 100000000001  1000000000001 1000000000001\n" <<
+		"101       101 1011111111101 101111111111  1011111111101\n" <<
+		"101       101 101       101 101           101       101\n" <<
+		"1011111111101 101       101 101111111111  101       101\n" <<
+		"1000000000001 101       101 1000000000001 101       101\n" <<
+		"1011111111101 101       101  111111111101 1011111111101\n" <<
+		"101       101 101       101           101 1000000000001\n" <<
+		"101       101 1011111111101  111111111101  1111111011  \n" <<
+		"101       101 100000000001  1000000000001         101  \n" <<
+		"1         1   1111111111    11111111111           1    \n" << std::endl;
+		
+
+}
+
 void sendGreeting()
 {
 	std::cout << APP_NAME << " " << translate(STRING_VERSION) << " " << APP_VERSION << std::endl;
@@ -112,6 +136,24 @@ void sendGreeting()
 
 void printAppInfo()
 {
+	std::cout << "\n\n";
+	printLogo();
 	std::cout << APP_NAME << " " << translate(STRING_VERSION) << " " << APP_VERSION << std::endl;
 	std::cout << translate(STRING_BUILD_DATE) << " " << __DATE__ << " " << translate(STRING_AT) << " " << __TIME__ << std::endl;
+}
+
+void setOutputEcho(bool b)
+{
+	echo = b;
+}
+
+void updateWindowTitle()
+{
+	std::string t;
+
+	if (currentFile) t = APP_NAME + (std::string) " - " + currentFile->midi.getName();
+	else t = APP_NAME + (std::string) " - V" + APP_VERSION;
+
+
+	SetConsoleTitleA(t.c_str());
 }

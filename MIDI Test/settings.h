@@ -8,6 +8,9 @@ class AppSettings {
 	int startUpOption = 1;
 	std::string lastFile = "";
 
+	void save(std::ofstream *out);
+	void load(std::ifstream *in);
+
 public:
 	// vector of language file addresses that the application loads
 	std::vector<std::string> languageFileAddresses;
@@ -15,6 +18,8 @@ public:
 	void addLanguage(std::string fileLoc, bool echo = true);
 
 	AppSettings();
+	AppSettings(std::string fileName);
+	~AppSettings();
 
 	int getStartUpOption();
 	void setStartUpOption(int newVal);

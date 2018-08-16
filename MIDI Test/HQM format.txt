@@ -1,0 +1,80 @@
+*** Guide to the .hqp format ***
+________________________________
+
+The format is a binary file that contains information in to following order
+
+-- Song -- 
+
+8 Bytes : size_t length of following string (say x)
+x bytes : string containing name of MIDI
+
+8 Bytes : size_t length of following string (say x)
+x bytes : string containing copyright info of MIDI
+
+8 Bytes : size_t length of following string (say x)
+x bytes : string containing description of MIDI
+
+4 Bytes : unsigned int PPQN value
+
+-- Track Configuration --
+
+1x system track:
+	8 bytes : size_t length of following string (say x)
+	x bytes : string containing name of system track
+	8 bytes : unsigned long long int number of events
+	for each event: 
+		4 bytes : int type of event
+		switch: event type (see list of events)
+
+16x event tracks:
+	8 bytes : size_t length of following string (say x)
+	x bytes : string containing name of system track
+	8 bytes : unsigned long long int number of events
+	for each event: 
+		4 bytes : int type of event
+		switch: event type (see list of events)
+
+8 bytes : unsigned long long int number of track impls
+for each trackImpl:
+	8 bytes : size_t length of following string (say x)
+	x bytes : string containing name of system track
+	1 byte : channel number of the track
+
+-- Pattern Configuration --
+
+8 bytes : long long int number of patterns
+for each pattern:
+	8 Bytes : size_t length of following string (say x)
+	x bytes : string containing name of pattern
+
+	4 bytes : unsigned int length of pattern in ticks
+
+	8 bytes : unsigned long long int number of tracks in pattern
+	for each track:
+		8 Bytes : size_t length of following string (say x)
+		x bytes : string containing name of pattern
+
+		8 bytes : unsigned long long int number of notes in track
+		for each note:
+			4 bytes : position of note (ticks)
+			1 byte : pitch of note
+			1 byte : velocity of note
+			4 bytes : length of note in ticks
+
+8 bytes : long long int number of pattern impls
+for each pattern impl:
+	8 bytes : long long int referred pattern number
+	8 bytes : double magnification of pattern
+	4 bytes : unsigned int trim from the start of the pattern
+	4 bytes : unsigned int trim from the end of the pattern
+	4 bytes : unsigned int start location of pattern
+	4 bytes : unsigned int top track number
+
+
+
+
+List of events:
+	
+	Generic event (Short)
+		4 bytes : int type of event
+		1 byte : byte value of event

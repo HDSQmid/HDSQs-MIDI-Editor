@@ -60,6 +60,7 @@
 #define STRING_VERSION (2011)
 #define STRING_TRANSLATION (2012)
 #define STRING_HELP_FOR (2013)
+#define STRING_ERROR_CODE (2014)
 
 //default names for objects
 #define DEFAULT_MIDI_NAME (3001)

@@ -113,7 +113,7 @@
     <Text Include="Guide to contributing.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="HQP format.txt">
+    <Text Include="HQM format.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

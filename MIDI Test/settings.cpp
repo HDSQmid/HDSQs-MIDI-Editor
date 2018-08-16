@@ -17,9 +17,19 @@ void AppSettings::addLanguage(std::string fileLoc, bool echo)
 
 AppSettings::AppSettings()
 {
-	// load the application's settings from the disk
 	// for now just add english as the default language
 	addLanguage("en.lang", false);
+}
+
+AppSettings::AppSettings(std::string fileName)
+{
+	// load the settings from a file
+	throw std::exception("Duh");
+}
+
+AppSettings::~AppSettings()
+{
+	// save the settings to a disk file
 }
 
 int AppSettings::getStartUpOption()

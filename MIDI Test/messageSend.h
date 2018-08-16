@@ -8,3 +8,7 @@ std::string sendMessage(int message, std::string args = "", int title = MESSAGE_
 void sendGreeting();
 
 void printAppInfo();
+
+void setOutputEcho(bool b);
+
+void updateWindowTitle();

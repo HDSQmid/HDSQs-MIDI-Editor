@@ -1,10 +1,9 @@
-﻿  stdafx.cpp
-  console_io_handler.cpp
-  files.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (MIDI Test.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   messageSend.cpp
-  MIDI Test.cpp
-  midi.cpp
+c:\users\miguel guthridge\source\repos\hdsqs-midi-editor\midi test\messagesend.cpp(13): warning C4244: 'initializing': conversion from 'wint_t' to 'char', possible loss of data
   Generating code
-  All 260 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  2 of 964 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    5 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  MIDI Test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\HDSQs-MIDI-Editor\x64\Release\MIDI Test.exe
+  MIDI test.vcxproj -> C:\Users\Miguel Guthridge\source\repos\HDSQs-MIDI-Editor\x64\Release\MIDI Editor.exe

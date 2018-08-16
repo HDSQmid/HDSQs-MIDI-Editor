@@ -88,6 +88,8 @@ public:
 
 	MidiPosition tick;
 
+	void save(std::ofstream *out);
+
 
 };
 
@@ -213,23 +215,26 @@ public:
 
 };
 
-class SystemTrack {
+class SystemTrack : public MidiTrack {
 public:
 	//events in vector (sorted in order of position)
+	std::vector<MidiEvent> events;
 
 	//addEvent(MidiEvent event);
 
-	std::string trackName = "System";
+	SystemTrack();
+
+	void save(std::ofstream * out);
 
 };
 
-class EventTrack {
+class EventTrack : public MidiTrack {
 public:
 	//events in vector (sorted in order of position)
 
 	//addEvent(MidiEvent event);
 
-	std::string trackName = "Event Track";
+	std::string trackName;
 
 
 

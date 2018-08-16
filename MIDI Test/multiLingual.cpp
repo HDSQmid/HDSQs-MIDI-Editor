@@ -68,10 +68,15 @@ std::string translate(int ID)
 	std::string str;
 	for (auto & testLang : langs) {
 		str = testLang.translate(ID);
-		if (str != "") break;
+		if (str != "") return str;
 	}
 	
-	if (str == "") str = translate(MESSAGE_NO_TRANSLATION_FOUND); // this could cause unending loop if no transdlation is found for this error
+	if (ID == MESSAGE_NO_TRANSLATION_FOUND) // no translation found for the no translation found message
+	{
+		throw std::exception("Bad Language File", ERROR_CODE_BAD_LANGUAGE);
+	}
+
+	if (str == "") str = translate(MESSAGE_NO_TRANSLATION_FOUND); // this could cause unending loop if no translation is found for this error
 
 	return str;
 }

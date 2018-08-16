@@ -212,6 +212,9 @@ void Midi::save(std::ofstream * out)
 	// write ppqn
 	out->write(reinterpret_cast<char*>(&ppqn), sizeof(int));
 
+	// write system track
+	systemEvents.save(out);
+
 	// for each pattern, call function to get array of bytes for pattern
 	// including unique int id for pattern to be used later?
 
@@ -416,4 +419,43 @@ PatternImpl::PatternImpl(Pattern * pat, int trackNum, MidiPosition tick)
 void PatternImpl::open()
 {
 	pattern->open();
+}
+
+SystemTrack::SystemTrack()
+{
+	trackName = std::string("System");
+}
+
+void SystemTrack::save(std::ofstream * out)
+{
+	//write name of track
+	{
+		size_t size = trackName.size();
+		out->write(reinterpret_cast<char*>(&size), sizeof(size_t));
+		out->write(trackName.c_str(), size);
+	}
+
+	// write  events
+	{
+		// get number of events
+		size_t s = events.size();
+
+		// write number of events
+		out->write(reinterpret_cast<char*>(&s), sizeof(size_t));
+
+		for (int i = 0; i < s; i++) 
+		{
+			events[i].save(out);
+		}
+
+	}
+
+
+
+}
+
+void MidiEvent::save(std::ofstream *out)
+{
+	// write type of event
+	out->write(reinterpret_cast<char*>(&type), sizeof type);
 }
