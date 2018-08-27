@@ -231,8 +231,7 @@ ConsoleQuit::ConsoleQuit()
 
 void ConsoleQuit::call(std::string args)
 {
-	if( fileIsOpen()) fileClose();
-	exit(0);
+	quit();
 }
 
 ConsoleHelp::ConsoleHelp()

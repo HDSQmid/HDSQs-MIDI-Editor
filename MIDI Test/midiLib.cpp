@@ -4,81 +4,7 @@
 
 // midi events
 
-ShortValueMidiEvent::ShortValueMidiEvent(int type, byte value)
-{
-	this->type = type;
 
-	setValue(value);
-
-}
-
-ShortValueMidiEvent::ShortValueMidiEvent()
-{
-	type = 0;
-	value = 0;
-}
-
-void ShortValueMidiEvent::setValue(byte val)
-{
-	if (val < 0) value = 0;
-	else {
-		if (val > 127) value = 127;
-		else value = val;
-	}
-}
-
-byte ShortValueMidiEvent::getRawValue()
-{
-	return value;
-}
-
-std::string ShortValueMidiEvent::getValueS()
-{
-	
-
-	return std::string((char*) value);
-}
-
-byte ShortValueMidiEvent::getValue()
-{
-	return getRawValue();
-}
-
-void ShortValueMidiEvent::increment(byte increment)
-{
-	setValue(value + increment);
-}
-
-MidiNote::MidiNote(int pitch, int value, int gate)
-{
-	setValue(value);
-	setPitch(pitch);
-	setGate(gate);
-}
-
-void MidiNote::setValue(int val)
-{
-	if (val < 1) velocity = 1;
-	else {
-		if (val > 127) velocity = 127;
-		else velocity = val;
-	}
-}
-
-void MidiNote::setPitch(int val)
-{
-	if (val < 0) pitch = 0;
-	else {
-		if (val > 127) pitch = 127;
-		else pitch = val;
-	}
-}
-
-void MidiNote::setGate(int val)
-{
-	if (val <= 0) val = 1;
-	gate = val;
-}
 
 MidiPosition::MidiPosition()
 {
@@ -117,22 +43,7 @@ void MidiPosition::increment(int numTicks)
 	setPosition(position + numTicks);
 }
 
-void MidiPitchBend::setValue(int val)
-{
-	if (val < -8191) longValue = -8191;
-	else {
-		if (val > 8192) longValue = 8192;
-		else longValue = val;
-	}
-}
 
-void MidiTempo::setValue(int val)
-{
-	if (val < 1) value = 1;
-	else {
-		value = val; // no upper limit
-	}
-}
 
 //midi object
 
@@ -454,8 +365,3 @@ void SystemTrack::save(std::ofstream * out)
 
 }
 
-void MidiEvent::save(std::ofstream *out)
-{
-	// write type of event
-	out->write(reinterpret_cast<char*>(&type), sizeof type);
-}

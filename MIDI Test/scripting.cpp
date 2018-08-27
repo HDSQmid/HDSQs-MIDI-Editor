@@ -1,5 +1,5 @@
-#include "scripting.h"
 #include "stdafx.h"
+#include "scripting.h"
 
 void quickRunScript(std::string fileName)
 {

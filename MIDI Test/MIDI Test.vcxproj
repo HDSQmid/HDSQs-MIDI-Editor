@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AppMisc.h" />
     <ClInclude Include="console_io_handler.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="files.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AppMisc.cpp" />
     <ClCompile Include="console_io_handler.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="files.cpp" />

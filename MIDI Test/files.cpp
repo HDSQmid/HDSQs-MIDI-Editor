@@ -150,6 +150,7 @@ void midiFile::saveFile()
 	else {
 
 		// send an error about not being able to save the file
+		sendMessage(MESSAGE_ERROR_SAVING_FILE, "", MESSAGE_TYPE_ERROR);
 
 	}
 
@@ -199,3 +200,4 @@ bool fileIsOpen() {
 	else return true;
 
 }
+

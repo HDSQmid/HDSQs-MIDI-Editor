@@ -81,127 +81,58 @@ public:
 //Events
 ///
 
+class midiData {
+
+public:
+	unsigned int length;
+	byte * data;
+
+	// may lose data if not dynamically allocated
+	// this should be managed by the constructor
+	midiData(int lengthOfData, byte d);
+
+};
+
 class MidiEvent {
+private:
+	byte value;
 protected:
-	int type;
+	MidiPosition position;
 public:
-
-	MidiPosition tick;
-
-	void save(std::ofstream *out);
-
+	// saves data to HQM format
+	virtual void save(std::ofstream * o) = 0;
+	// loads data from HQM format
+	virtual void load(std::ifstream * i) = 0;
+	// returns the midi data of the structure
+	virtual midiData getMidiData() = 0;
 
 };
 
-class ShortValueMidiEvent : public MidiEvent { // most event types can be used directly from this
+class UnknownMidiEvent : public MidiEvent {
 protected:
-	
-	byte value;	// velocity for note, etc
-				// 0 - 127 generally
-
+	byte type;
+	byte param1, param2;
 public:
-
-
-	ShortValueMidiEvent(int type, byte value);
-
-	ShortValueMidiEvent();
-
-	virtual void setValue(byte val);
-
-	byte getRawValue();
-
-	virtual std::string getValueS(); //return as string
-
-	virtual byte getValue();
-
-	void increment(byte increment);
-
-	
-
-};
-
-class LongValueMidiEvent : public MidiEvent { // most event types can be used directly from this
-protected:
-
-	int value;	// velocity for note, etc
-				// 0 - 127 generally
-public:
-
-
-	LongValueMidiEvent(int type, int value);
-
-	LongValueMidiEvent();
-
-	virtual void setValue(int val);
-
-	int getRawValue();
-
-	virtual std::string getValueS(); //return as string
-
-	virtual int getValue();
-
-	void increment(int increment);
-
-
-
+	virtual midiData getMidiData();
+	virtual void save(std::ofstream * o);
+	virtual void load(std::ifstream * i);
 };
 
 class MidiNote {
 protected:
-	byte pitch;
-	byte velocity;
-	byte release;
-	unsigned int gate;
-	//velocity included in class MidiEvent
+	byte pitch, velocity, release;
+
 public:
-	MidiNote(int pitch, int value, int gate);
-
-	void setValue(int val);
-
-	void setPitch(int val);
-
-	void setGate(int val);
+	midiData getNoteOn();
+	midiData getNoteOff();
+	void save(std::ofstream * o);
+	void load(std::ifstream * i);
 
 };
 
-class MidiPitchBend : public LongValueMidiEvent {
-	int longValue;
-public:
-	//value included in class MidiEvent
-	//overload set value (value between -8191 and 8192)
-	void setValue(int val);
-
-};
-
-class MidiTempo : public LongValueMidiEvent {
-
-	//tempo value included in class MidiEvent
-	//add different return function (return based on time signature)
-
-	void setValue(int val);
-
-	int getValue(); // return based on time signature
-
-	std::string getValueS(); //return as string
-
-};
-
-class MidiKey : public ShortValueMidiEvent {
-
-
-	//key value included in class MidiEvent
-	//add different return function (return as string)
-
-};
-
-class MidiMark : public ShortValueMidiEvent {
-
-	std::string value;
-	//add different return function (return as string)
-
-};
-
-
+///
+//Tracks
+///
 
 class MidiTrack {
 public:

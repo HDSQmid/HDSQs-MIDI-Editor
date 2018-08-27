@@ -1,4 +1,4 @@
-*** Guide to the .hqp format ***
+*** Guide to the .hqm format ***
 ________________________________
 
 The format is a binary file that contains information in to following order

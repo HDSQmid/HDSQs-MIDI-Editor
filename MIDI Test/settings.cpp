@@ -69,4 +69,14 @@ void AppSettings::setLastFile(std::string str)
 	lastFile = str;
 }
 
+bool AppSettings::getSaveBackup()
+{
+	return saveBackup;
+}
+
+void AppSettings::setSaveBackup(bool newVal)
+{
+	saveBackup = newVal;
+}
+
 AppSettings * settings;
